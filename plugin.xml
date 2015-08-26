@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.payfriendz.cordova.jumio"
+        version="0.1.0">
+    <name>JumioMobile</name>
+    <description>JumioSDK wrapper</description>
+    <author>Payfriendz Ltd</author>
+    <license>Apache 2.0</license>
+
+    <keywords>cordova,phonegap,jumio</keywords>
+
+    <js-module src="www/cdv-plugin-jumio-sdk.js" name="JumioMobile">
+        <clobbers target="JumioMobile" />
+    </js-module>
+
+    <asset src="www/jumio-mobile-js-helper.js" target="js/jumio-mobile-js-helper.js" />
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="JumioMobile">
+                <param name="ios-package" value="JumioMobileCordovaPlugin" onload="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/JumioMobileCordovaPlugin.h" />
+        <source-file src="src/ios/JumioMobileCordovaPlugin.m" />
+
+        <resource-file src="src/ios/JumioMobileSDK/Netswipe/NetswipeResources.bundle" />
+        <resource-file src="src/ios/JumioMobileSDK/Netswipe/Localizable-Netswipe.strings" />
+        <resource-file src="src/ios/JumioMobileSDK/Netverify/NetverifyResources.bundle" />
+        <resource-file src="src/ios/JumioMobileSDK/Netverify/Localizable-Netverify.strings" />
+
+        <framework src="Accelerate.framework" />
+        <framework src="AudioToolbox.framework" />
+        <framework src="AVFoundation.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="CoreImage.framework"/>
+        <framework src="CoreMedia.framework"/>
+        <framework src="CoreText.framework"/>
+        <framework src="CoreVideo.framework"/>
+        <framework src="Foundation.framework"/>
+        <framework src="MobileCoreServices.framework" />
+        <framework src="Security.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="QuartzCore.framework"/>
+        <framework src="UIKit.framework"/>
+
+        <framework src="src/ios/JumioMobileSDK/JumioCore.framework" custom="true"/>
+        <framework src="src/ios/JumioMobileSDK/Netswipe.framework" custom="true"/>
+        <framework src="src/ios/JumioMobileSDK/Netverify.framework" custom="true"/>
+
+        <framework src="libc++.dylib" />
+        <framework src="libz.dylib" />
+        <framework src="libiconv.dylib" />
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="JumioMobile">
+                <param name="android-package" value="com.payfriendz.cordova.jumio.JumioMobileCordovaPlugin" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/JumioMobileCordovaPlugin.java" target-dir="src/android/JumioMobileCordovaPlugin.java" />>
+        <source-file src="src/android/res/CustomTheme.xml" target-dir="res/values"/>
+
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-permission android:name="android.permission.VIBRATE"/>
+            <uses-feature android:name="android.hardware.camera" android:required="true"/>
+            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+        
+            <activity android:theme="@style/CustomTheme.Netverify" android:name="com.jumio.netverify.sdk.activity.NetverifyActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+        </config-file>
+
+        <proguard-config>
+            -keep class com.jumio.** { *; }
+            -keep class netswipe.** { *; }
+        </proguard-config>
+
+    </platform>
+</plugin>

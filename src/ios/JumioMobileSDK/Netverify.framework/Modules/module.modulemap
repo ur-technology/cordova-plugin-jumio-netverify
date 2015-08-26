@@ -1,0 +1,6 @@
+framework module Netverify {
+  umbrella header "Netverify.h"
+
+  export *
+  module * { export * }
+}

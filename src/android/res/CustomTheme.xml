@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTheme.Netverify" parent="@style/Theme.Netverify">
+        <item name="android:actionBarStyle">@style/CustomTheme_CustomActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="CustomTheme_CustomActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#ff0000</item>
+    </style>
+</resources>

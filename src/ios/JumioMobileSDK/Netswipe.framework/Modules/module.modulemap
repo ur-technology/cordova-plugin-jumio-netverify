@@ -1,0 +1,6 @@
+framework module Netswipe {
+  umbrella header "Netswipe.h"
+
+  export *
+  module * { export * }
+}
