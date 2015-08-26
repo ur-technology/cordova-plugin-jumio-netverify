@@ -13,8 +13,6 @@
         <clobbers target="JumioMobile" />
     </js-module>
 
-    <asset src="www/jumio-mobile-js-helper.js" target="js/jumio-mobile-js-helper.js" />
-
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
