@@ -1,16 +1,18 @@
 function JumioMobile() {}
 
 //Native calls
-JumioMobile.prototype.sdkVersion = function(jumioCredentials, completionCallback) {
+
+//Netverify
+JumioMobile.prototype.netverifySdkVersion = function(jumioCredentials, completionCallback) {
   var failureCallback = function() {
-    console.log("Could not retrieve Jumio library version");
+    console.log("Could not retrieve Jumio Netverify library version");
   };
 
-  cordova.exec(completionCallback, failureCallback, "JumioMobile", "sdkVersion", [jumioCredentials]);
+  cordova.exec(completionCallback, failureCallback, "JumioMobile", "netverifySdkVersion", [jumioCredentials]);
 };
 
-JumioMobile.prototype.isSupportedPlatform = function(successCallback, failureCallback) {
-    cordova.exec(successCallback, failureCallback, "JumioMobile", "isSupportedPlatform", []);
+JumioMobile.prototype.isSupportedPlatformForNetverify = function(successCallback, failureCallback) {
+    cordova.exec(successCallback, failureCallback, "JumioMobile", "isSupportedPlatformForNetverify", []);
 };
 
 JumioMobile.prototype.presentNetverifyController = function(jumioCredentials, netverifyConfiguration, completionCallback, failureCallback) {
@@ -24,8 +26,28 @@ JumioMobile.prototype.configureNetverifyControllerAppearence = function(appearen
   cordova.exec(completionCallback, failureCallback, "JumioMobile", "configureNetverifyControllerAppearence", [appearenceConfig]);
 }
 
-//Helpers
+//Netswipe
+JumioMobile.prototype.netswipeSdkVersion = function(jumioCredentials, completionCallback) {
+  var failureCallback = function() {
+    console.log("Could not retrieve Jumio Netswipe library version");
+  };
 
+  cordova.exec(completionCallback, failureCallback, "JumioMobile", "netswipeSdkVersion", [jumioCredentials]);
+};
+
+JumioMobile.prototype.isSupportedPlatformForNetswipe = function(successCallback, failureCallback) {
+  cordova.exec(successCallback, failureCallback, "JumioMobile", "isSupportedPlatformForNetswipe", []);
+};
+
+JumioMobile.prototype.isRootedDevice = function(successCallback, failureCallback) {
+  cordova.exec(successCallback, failureCallback, "JumioMobile", "isRootedDevice", []);
+};
+
+JumioMobile.prototype.presentNetswipeController = function(jumioCredentials, merchangeReportingCriteria, netswipeConfiguration, completionCallback, failureCallback) {
+  cordova.exec(completionCallback, failureCallback, "JumioMobile", "presentNetswipeController", [jumioCredentials, merchangeReportingCriteria, netswipeConfiguration]);
+}   
+
+//Helpers
 JumioMobile.prototype.JumioCredentials = function (apiToken, apiSecret){
   this.apiToken = String(apiToken);
   this.apiSecret = String(apiSecret);
@@ -86,6 +108,42 @@ JumioMobile.prototype.JumioNetverifyConfiguration = function(options){
     //Note: Only possible for accounts configured as Fastfill.
     enableVisa: true
 
+  };
+
+  if (!options || typeof options !== "object") {
+    return defaults;
+  }
+
+  for (var i in options) {
+    if (defaults.hasOwnProperty(i)) {
+      defaults[i] = options[i];
+    }
+  }
+
+  return defaults;
+}
+
+JumioMobile.prototype.JumioNetswipeConfiguration = function(options){
+  defaults = {
+    cardHolderNameRequired: true,
+    sortCodeAndAccountNumberRequired: true,
+    manualEntryEnabled: false,
+    expiryRequired: true,
+    cvvRequired: true,
+    expiryEditable: false,
+    firstName: null,
+    lastName: null,
+    cardHolderNameEditable: false,
+    vibrationEffectEnabled: true,
+    soundEffect: null,
+    
+    //Set the default camera position
+    // Possible values are:
+    // - "FRONT"
+    // - "BACK"
+    cameraPosition: "BACK",
+    enableFlashOnScanStart: false,
+    cardNumberMaskingEnabled: true
   };
 
   if (!options || typeof options !== "object") {

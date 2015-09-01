@@ -9,7 +9,7 @@
 
 @implementation JumioMobileCordovaPlugin
 
-- (void)sdkVersion:(CDVInvokedUrlCommand *)command {
+- (void)netverifySdkVersion:(CDVInvokedUrlCommand *)command {
     NSDictionary* credentials = [command.arguments objectAtIndex:0];
 
     NetverifyViewController* netverifyViewController = [self instantiateNetverifyViewController: credentials];
@@ -21,7 +21,7 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)isSupportedPlatform:(CDVInvokedUrlCommand *)command {
+- (void)isSupportedPlatformForNetverify:(CDVInvokedUrlCommand *)command {
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsBool: YES];
     
@@ -124,9 +124,9 @@
   if(documentData.postalCode)[documentDataDictionary setObject: documentData.postalCode forKey: @"postalCode"];
   if(documentData.optionalData1)[documentDataDictionary setObject: documentData.optionalData1 forKey: @"optionalData1"];  
   if(documentData.optionalData2)[documentDataDictionary setObject: documentData.optionalData2 forKey: @"optionalData2"];
-  if(documentData.nameMatch)[documentDataDictionary setObject: [NSNumber numberWithBool: documentData.nameMatch] forKey: @"nameMatch"];
+  [documentDataDictionary setObject: [NSNumber numberWithBool: documentData.nameMatch] forKey: @"nameMatch"];
   if(documentData.nameDistance)[documentDataDictionary setObject: [NSNumber numberWithInteger: documentData.nameDistance] forKey: @"nameDistance"];
-  if(documentData.livenessDetected)[documentDataDictionary setObject: [NSNumber numberWithBool: documentData.livenessDetected] forKey: @"livenessDetected"];
+  [documentDataDictionary setObject: [NSNumber numberWithBool: documentData.livenessDetected] forKey: @"livenessDetected"];
   if(documentData.issuingDate)[documentDataDictionary setObject: [self convertNSDateToNSString: documentData.issuingDate] forKey: @"issuingDate"];
   if(documentData.expiryDate)[documentDataDictionary setObject: [self convertNSDateToNSString: documentData.expiryDate] forKey: @"expiryDate"];
   if(documentData.dob) [documentDataDictionary setObject: [self convertNSDateToNSString: documentData.dob] forKey: @"dob"];
@@ -150,6 +150,123 @@
                                                       messageAsDictionary: dictionary];
 
     [self.commandDelegate sendPluginResult: pluginResult callbackId:self.command.callbackId];
+  }];
+}
+
+#pragma mark - Netswipe SDK related methods
+
+- (void)netswipeSdkVersion:(CDVInvokedUrlCommand *)command {
+    NSDictionary* credentials = [command.arguments objectAtIndex:0];
+
+    NetswipeViewController* netswipeViewController =  [self instantiateNetswipeViewController: credentials merchantReportingCriteria: nil];
+    NSString *sdkVersion = [netswipeViewController sdkVersion];
+
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsString: sdkVersion];
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)isSupportedPlatformForNetswipe:(CDVInvokedUrlCommand *)command {
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsBool: YES];
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId]; 
+}
+
+- (void) isRootedDevice: (CDVInvokedUrlCommand *)command {
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsBool: false];
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId]; 
+}
+
+- (void)presentNetswipeController:(CDVInvokedUrlCommand *)command{
+  NSDictionary* credentials = [command.arguments objectAtIndex:0];
+  NSString* merchantReportingCriteria = [command.arguments objectAtIndex:1];
+  NetswipeViewController* netswipeViewController = [self instantiateNetswipeViewController: credentials merchantReportingCriteria: merchantReportingCriteria];
+
+  NSDictionary* netswipeConfiguration = [command.arguments objectAtIndex:2];
+  [self setUpProperty: @"merchantReportingCriteria" from: netswipeConfiguration on: netswipeConfiguration];
+  [self setUpProperty: @"cardHolderNameRequired" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"sortCodeAndAccountNumberRequired" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"manualEntryEnabled" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"expiryRequired" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"cvvRequired" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"expiryEditable" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"cardHolderNameEditable" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"soundEffect" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"vibrationEffectEnabled" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"enableFlashOnScanStart" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"cardNumberMaskingEnabled" from: netswipeConfiguration on: netswipeViewController];
+
+  [self setUpEnumProperty: @"cameraPosition" withPossibleValues: [self allJumioCameraPositionToStringCode] from: netswipeConfiguration on: netswipeViewController];  
+
+  if([netswipeConfiguration objectForKey: @"supportedCreditCardTypes"]){
+    NetswipeCreditCardTypes cardTypes;
+    NSArray* cardTypesStr = [netswipeConfiguration objectForKey: @"supportedCreditCardTypes"];
+    for (NSString* cardTypeStr in cardTypesStr) {
+      NSArray *temp = [[self allNetswipeCreditCardTypeToStringCode] allKeysForObject: cardTypeStr];
+      cardTypes = cardTypes | [[temp objectAtIndex:0] intValue];
+    }    
+    netswipeViewController.supportedCreditCardTypes = cardTypes;
+  }
+
+  if( [netswipeConfiguration objectForKey: @"firstName"] != [NSNull null] && [netswipeConfiguration objectForKey: @"lastName"] != [NSNull null]){
+    NSString* firstName = [netswipeConfiguration objectForKey: @"firstName"];
+    NSString* lastName = [netswipeConfiguration objectForKey: @"lastName"];
+    netswipeViewController.name = [[firstName stringByAppendingString: @" "] stringByAppendingString: lastName];
+  }
+
+  self.command = command;
+  [self.viewController presentViewController: netswipeViewController animated: YES completion: nil];
+}
+
+#pragma mark - NetswipeViewControllerDelegate
+- (void) netswipeViewController: (NetswipeViewController *) controller didStartScanAttemptWithScanReference: (NSString *) scanReference {
+
+}
+
+- (void) netswipeViewController: (NetswipeViewController *) controller didFinishScanWithCardInformation: (NetswipeCardInformation *) cardInformation scanReference: (NSString *) scanReference {
+  NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+
+  if(cardInformation.cardType)[dictionary setObject: [[self allNetswipeCreditCardTypeToStringCode] objectForKey: [NSNumber numberWithInt: cardInformation.cardType]] forKey: @"cardType"]; 
+  if(cardInformation.cardNumber)[dictionary setObject: cardInformation.cardNumber forKey: @"cardNumber"]; 
+  if(cardInformation.cardNumberGrouped)[dictionary setObject: cardInformation.cardNumberGrouped forKey: @"cardNumberGrouped"];
+  if(cardInformation.cardNumberMasked)[dictionary setObject: cardInformation.cardNumberMasked forKey: @"cardNumberMasked"];
+  if(cardInformation.cardNumberManuallyEntered)[dictionary setObject: [NSNumber numberWithBool: cardInformation.cardNumberManuallyEntered] forKey: @"cardNumberManuallyEntered"];
+  if(cardInformation.cardExpiryMonth)[dictionary setObject: cardInformation.cardExpiryMonth forKey: @"cardExpiryMonth"];
+  if(cardInformation.cardExpiryYear)[dictionary setObject: cardInformation.cardExpiryYear forKey: @"cardExpiryYear"];
+  if(cardInformation.cardExpiryDate)[dictionary setObject: cardInformation.cardExpiryDate forKey: @"cardExpiryDate"];
+  if(cardInformation.cardCVV)[dictionary setObject: cardInformation.cardCVV forKey: @"cardCVV"];
+  if(cardInformation.cardHolderName)[dictionary setObject: cardInformation.cardHolderName forKey: @"cardHolderName"];
+  if(cardInformation.cardSortCode)[dictionary setObject: cardInformation.cardSortCode forKey: @"cardSortCode"];
+  if(cardInformation.cardAccountNumber)[dictionary setObject: cardInformation.cardAccountNumber forKey: @"cardAccountNumber"];
+  [dictionary setObject: [NSNumber numberWithBool: cardInformation.cardSortCodeValid] forKey: @"sortCodeValid"];
+  [dictionary setObject: [NSNumber numberWithBool: cardInformation.cardAccountNumberValid] forKey: @"accountNumberValid"];
+  [dictionary setObject: [NSNumber numberWithBool: cardInformation.nameMatch] forKey: @"nameMatch"];
+  if(cardInformation.nameDistance)[dictionary setObject: [NSNumber numberWithInteger: cardInformation.nameDistance] forKey: @"nameDistance"];
+
+  [controller dismissViewControllerAnimated:YES completion:^{
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsDictionary: dictionary];
+
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.command.callbackId];
+
+    [cardInformation clear];
+  }];
+}
+
+- (void) netswipeViewController: (NetswipeViewController *) controller didCancelWithError: (NSError *) error {
+  NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+  if(error.code) [dictionary setObject: [NSNumber numberWithInteger: error.code] forKey: @"errorCode"];
+  if(error.localizedDescription)[dictionary setObject: error.localizedDescription forKey: @"errorMessage"];
+
+  [controller dismissViewControllerAnimated:YES completion:^{
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus: CDVCommandStatus_ERROR
+                                                      messageAsDictionary: dictionary];
+
+    [self.commandDelegate sendPluginResult: pluginResult callbackId: self.command.callbackId];
   }];
 }
 
@@ -203,6 +320,19 @@
     nil];
 }
 
+- (NSDictionary*) allNetswipeCreditCardTypeToStringCode {
+  return [[NSDictionary alloc] initWithObjectsAndKeys: 
+    @"VISA", [NSNumber numberWithInt: NetswipeCreditCardTypeVisa],
+    @"MASTER_CARD", [NSNumber numberWithInt: NetswipeCreditCardTypeMasterCard],
+    @"AMERICAN_EXPRESS", [NSNumber numberWithInt: NetswipeCreditCardTypeAmericanExpress],
+    @"DINERS_CLUB", [NSNumber numberWithInt: NetswipeCreditCardTypeDiners],
+    @"DISCOVER", [NSNumber numberWithInt: NetswipeCreditCardTypeDiscover],
+    @"CHINA_UNIONPAY", [NSNumber numberWithInt: NetswipeCreditCardTypeChinaUnionPay],
+    @"JCB", [NSNumber numberWithInt: NetswipeCreditCardTypeJCB],
+    @"PRIVATE_LABEL", [NSNumber numberWithInt: NetswipeCreditCardTypePrivateLabel],
+    nil];
+}
+
 - (NSString*) convertNSDateToNSString: (NSDate*) date{
   NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
   dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
@@ -213,6 +343,10 @@
 
 - (NetverifyViewController*) instantiateNetverifyViewController: (NSDictionary*) credentials {
   return [[NetverifyViewController alloc] initWithMerchantApiToken: credentials[@"apiToken"] apiSecret: credentials[@"apiSecret"] delegate: self dataCenter: JumioDataCenterEU];
+}
+
+- (NetswipeViewController*) instantiateNetswipeViewController: (NSDictionary*) credentials merchantReportingCriteria: (NSString*) merchantReportingCriteria {
+  return [[NetswipeViewController alloc] initWithMerchantApiToken: credentials[@"apiToken"] apiSecret: credentials[@"apiSecret"] merchantReportingCriteria: nil delegate: self dataCenter: JumioDataCenterEU customOverlay: nil];
 }
 
 // Assumes input like "#00FF00" (#RRGGBB).

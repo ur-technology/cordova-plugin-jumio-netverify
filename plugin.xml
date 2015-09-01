@@ -76,6 +76,7 @@
             <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
         
             <activity android:theme="@style/CustomTheme.Netverify" android:name="com.jumio.netverify.sdk.activity.NetverifyActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+            <activity android:theme="@style/Theme.Netswipe" android:hardwareAccelerated="true" android:name="com.jumio.netswipe.sdk.activity.ScanCardActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
         </config-file>
 
         <proguard-config>

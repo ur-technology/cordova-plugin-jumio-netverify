@@ -6,6 +6,7 @@ import org.apache.cordova.CordovaPlugin;
 import com.jumio.mobile.sdk.*;
 import com.jumio.mobile.sdk.enums.*;
 import com.jumio.netswipe.sdk.*;
+import com.jumio.netswipe.sdk.enums.*;
 import com.jumio.netverify.barcode.*;
 import com.jumio.netverify.barcode.enums.BarcodeFormat;
 import com.jumio.netverify.sdk.*;
@@ -16,17 +17,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
+import android.app.Activity;
 
 import java.text.SimpleDateFormat;
 
 public class JumioMobileCordovaPlugin extends CordovaPlugin {
     private CallbackContext callbackContext;
     private NetverifySDK netverifySDK;
+    private NetswipeSDK netswipeSDK;
 
-     @Override
+    @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {        
-        if("isSupportedPlatform".equals(action)) {
+
+        //NETVERIFY
+        if("isSupportedPlatformForNetverify".equals(action)) {
             if (NetverifySDK.isSupportedPlatform(cordova.getActivity())){
                 callbackContext.success();
             }else{
@@ -34,7 +41,7 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             }
             return true;
         }
-        if("sdkVersion".equals(action)) {
+        if("netverifySdkVersion".equals(action)) {
             String sdkVersion = NetverifySDK.getSDKVersion();
             callbackContext.success(sdkVersion);
             return true;
@@ -48,6 +55,33 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             //THIS IS A NO-OP ON JAVA, APPEARENCE IS NOT CONFIGURED THROUGH CODE
             return true;
         }
+
+        //NETSWIPE
+        if("netswipeSdkVersion".equals(action)) {
+            String sdkVersion = NetswipeSDK.getSDKVersion();
+            callbackContext.success(sdkVersion);
+            return true;
+        }
+        if("isSupportedPlatformForNetswipe".equals(action)) {
+            if (NetswipeSDK.isSupportedPlatform(cordova.getActivity())){
+                callbackContext.success();
+            }else{
+                callbackContext.error("Device not supported");
+            }
+            return true;
+        }
+        if("isRootedDevice".equals(action)) {
+            boolean isRooted = NetswipeSDK.isRooted();
+            callbackContext.success(isRooted ? 1 : 0);
+            return true;
+        }
+
+        if("presentNetswipeController".equals(action)) {
+            this.callbackContext = callbackContext;
+            this.presentNetswipeController(args.getJSONObject(0), args.getString(1), args.getJSONObject(2), callbackContext);
+            return true;
+        }
+
         return false;
     }
 
@@ -109,6 +143,51 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             }
             this.netverifySDK.destroy();
         }
+
+        if (requestCode == NetswipeSDK.REQUEST_CODE) {
+            ArrayList<String> scanReferences = data.getStringArrayListExtra(NetswipeSDK.EXTRA_SCAN_ATTEMPTS);
+            if (resultCode == Activity.RESULT_OK) {
+                NetswipeCardInformation cardInformation = data.getParcelableExtra(NetswipeSDK.EXTRA_CARD_INFORMATION);
+                CreditCardType cardType = cardInformation.getCardType();
+
+                try{
+                    result.put("cardType", cardType.name());
+                    result.put("cardNumber", new String(cardInformation.getCardNumber()));
+                    result.put("cardNumberGrouped", new String(cardInformation.getCardNumberGrouped()));
+                    result.put("cardNumberMasked", new String(cardInformation.getCardNumberMasked()));
+                    result.put("cardNumberManuallyEntered", cardInformation.isCardNumberManuallyEntered());
+                    result.put("cardExpiryMonth", new String(cardInformation.getCardExpiryDateMonth()));
+                    result.put("cardExpiryYear", new String(cardInformation.getCardExpiryDateYear()));
+                    result.put("cardExpiryDate", new String(cardInformation.getCardExpiryDate()));
+                    result.put("cardCVV", new String(cardInformation.getCardCvvCode()));
+                    result.put("cardHolderName", new String(cardInformation.getCardHolderName()));
+
+                    result.put("cardSortCode", new String(cardInformation.getCardSortCode()));
+                    result.put("cardAccountNumber", new String(cardInformation.getCardAccountNumber()));
+                    result.put("sortCodeValid", cardInformation.isCardSortCodeValid());
+                    result.put("accountNumberValid", cardInformation.isCardAccountNumberValid());
+                    result.put("nameMatch", cardInformation.isNameMatch());
+                    result.put("nameDistance", cardInformation.getNameDistance());
+
+                }catch(JSONException ex){
+                    this.callbackContext.error("Error reading scan results");
+                }
+
+                this.callbackContext.success(result);
+                cardInformation.clear();
+            }
+            else if (resultCode == Activity.RESULT_CANCELED) {
+                try{
+                    result.put("errorCode", data.getIntExtra(NetswipeSDK.EXTRA_ERROR_CODE, 0));
+                    result.put("errorMessage", data.getStringExtra(NetswipeSDK.EXTRA_ERROR_MESSAGE));
+
+                    this.callbackContext.error(result);
+                }catch(JSONException ex){
+                    this.callbackContext.error("Scan failed, but so did the error reading");
+                }
+            }
+            netswipeSDK.destroy();
+        }
     }
 
     private void presentNetverifyController(JSONObject crendentials, JSONObject configuration, CallbackContext callbackContext){
@@ -134,10 +213,10 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             if(configuration.has("requireFaceMatch")){ this.netverifySDK.setRequireFaceMatch(configuration.getBoolean("requireFaceMatch")); }
             if(configuration.has("enableVisa")){ this.netverifySDK.setEnableVisa(configuration.getBoolean("enableVisa")); }
             if(configuration.has("showFlagOnInfoBar")){ this.netverifySDK.setShowFlagOnInfoBar(configuration.getBoolean("showFlagOnInfoBar")); }
-            
+
             if(configuration.has("preselectedDocumentType")){ this.netverifySDK.setPreselectedDocumentType(NVDocumentType.fromString(configuration.getString("preselectedDocumentType"))); }
             if(configuration.has("preselectedDocumentVariant")){ setUpDocumentVariantFromStringCode(configuration.getString("preselectedDocumentVariant")); }
-            if(configuration.has("cameraPosition")){ setUpCameraPositionFromStringCode(configuration.getString("cameraPosition")); }
+            if(configuration.has("cameraPosition")){ this.netverifySDK.setCameraPosition(getCameraPositionFromStr(configuration.getString("cameraPosition"))); }
 
             String firstName = configuration.getString("firstName");
             String lastName = configuration.getString("lastName");
@@ -159,6 +238,59 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
         this.cordova.getActivity().runOnUiThread(runnable);
     }
 
+    private void presentNetswipeController(JSONObject crendentials, String merchantReportingCriteria, JSONObject configuration, CallbackContext callbackContext) throws JSONException{
+        try{
+            this.netswipeSDK = NetswipeSDK.create(cordova.getActivity(), crendentials.getString("apiToken"), crendentials.getString("apiSecret"), merchantReportingCriteria, JumioDataCenter.EU);
+        }catch(com.jumio.mobile.sdk.PlatformNotSupportedException exception){
+            callbackContext.error("Device not supported");
+        }catch(com.jumio.mobile.sdk.ResourceNotFoundException ex){
+            callbackContext.error("Resource not found");
+        }
+
+        if(this.netswipeSDK == null) return;
+
+        if(configuration.has("merchantReportingCriteria")){ this.netswipeSDK.setMerchantReportingCriteria(configuration.getString("merchantReportingCriteria")); }
+        if(configuration.has("cardHolderNameRequired")){ this.netswipeSDK.setCardHolderNameRequired(configuration.getBoolean("cardHolderNameRequired")); }
+        if(configuration.has("sortCodeAndAccountNumberRequired")){ this.netswipeSDK.setSortCodeAndAccountNumberRequired(configuration.getBoolean("sortCodeAndAccountNumberRequired")); }
+        if(configuration.has("manualEntryEnabled")){ this.netswipeSDK.setManualEntryEnabled(configuration.getBoolean("manualEntryEnabled")); }
+        if(configuration.has("expiryRequired")){ this.netswipeSDK.setExpiryRequired(configuration.getBoolean("expiryRequired")); }
+        if(configuration.has("cvvRequired")){ this.netswipeSDK.setCvvRequired(configuration.getBoolean("cvvRequired")); }
+        if(configuration.has("expiryEditable")){ this.netswipeSDK.setExpiryEditable(configuration.getBoolean("expiryEditable")); }
+        if(configuration.has("cardHolderNameEditable")){ this.netswipeSDK.setCardHolderNameEditable(configuration.getBoolean("cardHolderNameEditable")); }
+
+        if(configuration.has("vibrationEffectEnabled")){ this.netswipeSDK.setVibrationEffectEnabled(configuration.getBoolean("vibrationEffectEnabled")); }
+        if(configuration.has("enableFlashOnScanStart")){ this.netswipeSDK.setEnableFlashOnScanStart(configuration.getBoolean("enableFlashOnScanStart")); }
+        if(configuration.has("cardNumberMaskingEnabled")){ this.netswipeSDK.setCardNumberMaskingEnabled(configuration.getBoolean("cardNumberMaskingEnabled")); }
+
+        if(configuration.has("cameraPosition")){ this.netswipeSDK.setCameraPosition(getCameraPositionFromStr(configuration.getString("cameraPosition"))); }
+
+        if(configuration.has("supportedCreditCardTypes")){
+            ArrayList<CreditCardType> creditCardTypes = new ArrayList<CreditCardType>();
+
+            JSONArray cardTypesStr =configuration.getJSONArray("supportedCreditCardTypes");
+            for(int i = 0; i < cardTypesStr.length(); ++i) {
+                String cardTypeStr = cardTypesStr.getString(i);
+                creditCardTypes.add(getCreditCardTypeFromStr(cardTypeStr));                
+            }
+            netswipeSDK.setSupportedCreditCardTypes(creditCardTypes);
+        }
+
+        String firstName = configuration.getString("firstName");
+        String lastName = configuration.getString("lastName");
+        if( firstName != null && lastName != null){
+            this.netswipeSDK.setName(firstName + " " + lastName);
+        }
+
+        Runnable runnable = new Runnable() {
+            public void run() {
+                netswipeSDK.start();
+            }
+        };
+
+        this.cordova.setActivityResultCallback(this);
+        this.cordova.getActivity().runOnUiThread(runnable);
+    }
+
     private void setUpDocumentVariantFromStringCode(String documentVariantStr){
         if(documentVariantStr == "PAPER"){
             this.netverifySDK.setPreselectedDocumentVariant(NVDocumentVariant.PAPER);
@@ -168,13 +300,22 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
         }
     }
 
-    private void setUpCameraPositionFromStringCode(String cameraPositionStr){
+    private JumioCameraPosition getCameraPositionFromStr(String cameraPositionStr){
         if(cameraPositionStr == "FRONT"){
-            this.netverifySDK.setCameraPosition(JumioCameraPosition.FRONT);
+            return JumioCameraPosition.FRONT;
         }
-        if(cameraPositionStr == "BACK"){
-            this.netverifySDK.setCameraPosition(JumioCameraPosition.BACK);
-        }
-        
+        return JumioCameraPosition.BACK;
+    }
+
+    private CreditCardType getCreditCardTypeFromStr(String creditCardTypeStr){
+        if(creditCardTypeStr == "VISA"){ return CreditCardType.VISA; }
+        if(creditCardTypeStr == "MASTER_CARD"){ return CreditCardType.MASTER_CARD; }
+        if(creditCardTypeStr == "AMERICAN_EXPRESS"){ return CreditCardType.AMERICAN_EXPRESS; }
+        if(creditCardTypeStr == "CHINA_UNIONPAY"){ return CreditCardType.CHINA_UNIONPAY; }
+        if(creditCardTypeStr == "DISCOVER"){ return CreditCardType.DISCOVER; }
+        if(creditCardTypeStr == "DINERS_CLUB"){ return CreditCardType.DINERS_CLUB; }
+        if(creditCardTypeStr == "JCB"){ return CreditCardType.JCB; }
+        if(creditCardTypeStr == "PRIVATE_LABEL"){ return CreditCardType.PRIVATE_LABEL; }
+        return CreditCardType.UNKNOWN;
     }
 }
