@@ -54,7 +54,7 @@
         <framework src="libiconv.dylib" />
     </platform>
 
-    <!-- android -->
+    <!-- android 
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="JumioMobile">
@@ -84,5 +84,5 @@
             -keep class netswipe.** { *; }
         </proguard-config>
 
-    </platform>
+    </platform> -->
 </plugin>
