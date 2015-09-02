@@ -310,7 +310,6 @@
 - (void)setUpEnumProperty: (NSString* ) propertyName withPossibleValues: (NSDictionary*) enumToStringCodeDictionary from: (NSDictionary*) config on: (NSObject*) controller {
   NSObject* propertyValue = [config objectForKey: propertyName];
   if(propertyValue != [NSNull null]){
-    NSLog(@"I'm setting %@ with %@", propertyName, (NSString*)propertyValue);
     [controller setValue: [[enumToStringCodeDictionary allKeysForObject: propertyValue] lastObject] forKey: propertyName];
   }
 }
