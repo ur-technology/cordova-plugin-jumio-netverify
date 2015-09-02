@@ -68,9 +68,9 @@ JumioMobile.prototype.JumioNetverifyConfiguration = function(options){
     
     //When a selected country and ID type support more document variants (paper and plastic), you can specify the document variant in advance or let the user choose during the verification process.
     // Possible values are:
-    // - "UNKNOWN"
-    // - "PAPER"
-    // - "PLASTIC"
+    // - UNKNOWN
+    // - PAPER
+    // - PLASTIC
     preselectedDocumentVariant: null,
     
     //The merchant scan reference allows you to identify the scan (max. 100 characters). Note: Must not contain sensitive data like PII (Personally Identifiable Information) or account login.
@@ -100,8 +100,8 @@ JumioMobile.prototype.JumioNetverifyConfiguration = function(options){
     
     //Set the default camera position
     // Possible values are:
-    // - "FRONT"
-    // - "BACK"
+    // - FRONT
+    // - BACK
     cameraPosition: null,
     
     //Enable data extraction from visa documents
@@ -127,23 +127,37 @@ JumioMobile.prototype.JumioNetswipeConfiguration = function(options){
   defaults = {
     cardHolderNameRequired: true,
     sortCodeAndAccountNumberRequired: true,
-    manualEntryEnabled: false,
     expiryRequired: true,
     cvvRequired: true,
-    expiryEditable: false,
     firstName: null,
     lastName: null,
+    manualEntryEnabled: false,
+    expiryEditable: false,
     cardHolderNameEditable: false,
+    cardNumberMaskingEnabled: true,
+
     vibrationEffectEnabled: true,
+    //iOS only. Name of the soundfile
     soundEffect: null,
     
     //Set the default camera position
     // Possible values are:
-    // - "FRONT"
-    // - "BACK"
+    // - FRONT
+    // - BACK
     cameraPosition: "BACK",
     enableFlashOnScanStart: false,
-    cardNumberMaskingEnabled: true
+
+    //List of supported credit cards
+    // Possible values are:
+    // - VISA
+    // - MASTER_CARD
+    // - AMERICAN_EXPRESS
+    // - DINERS_CLUB
+    // - DISCOVER
+    // - CHINA_UNIONPAY
+    // - JCB
+    // - PRIVATE_LABEL
+    supportedCreditCardTypes: ["VISA", "MASTER_CARD"]
   };
 
   if (!options || typeof options !== "object") {
