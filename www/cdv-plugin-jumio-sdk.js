@@ -47,6 +47,13 @@ JumioMobile.prototype.presentNetswipeController = function(jumioCredentials, mer
   cordova.exec(completionCallback, failureCallback, "JumioMobile", "presentNetswipeController", [jumioCredentials, merchangeReportingCriteria, netswipeConfiguration]);
 }   
 
+JumioMobile.prototype.configureNetswipeControllerAppearence = function(appearenceConfig, completionCallback){
+  var failureCallback = function() {
+    console.log("Could not configure Netswipe appearence");   
+  };
+  cordova.exec(completionCallback, failureCallback, "JumioMobile", "configureNetswipeControllerAppearence", [appearenceConfig]);
+}
+
 //Helpers
 JumioMobile.prototype.JumioCredentials = function (apiToken, apiSecret){
   this.apiToken = String(apiToken);

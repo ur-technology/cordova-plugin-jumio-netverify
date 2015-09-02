@@ -52,7 +52,7 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             return true;
         }
         if("configureNetverifyControllerAppearence".equals(action)){
-            //THIS IS A NO-OP ON JAVA, APPEARENCE IS NOT CONFIGURED THROUGH CODE
+            //THIS IS A NO-OP ON ANDROID, APPEARENCE IS NOT CONFIGURED THROUGH CODE
             return true;
         }
 
@@ -79,6 +79,11 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
         if("presentNetswipeController".equals(action)) {
             this.callbackContext = callbackContext;
             this.presentNetswipeController(args.getJSONObject(0), args.getString(1), args.getJSONObject(2), callbackContext);
+            return true;
+        }
+
+        if("configureNetswipeControllerAppearence".equals(action)){
+            //THIS IS A NO-OP ON ANDROID, APPEARENCE IS NOT CONFIGURED THROUGH CODE
             return true;
         }
 

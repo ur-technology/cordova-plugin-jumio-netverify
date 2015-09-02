@@ -222,6 +222,34 @@
   [self.viewController presentViewController: netswipeViewController animated: YES completion: nil];
 }
 
+- (void)configureNetswipeControllerAppearence:(CDVInvokedUrlCommand *)command{
+  NSDictionary* appearenceConfig = [command.arguments objectAtIndex:0];
+
+  if([appearenceConfig objectForKey: @"submitButtonBackgroundColorNormal"])
+    [[NetswipeSubmitButton appearanceWhenContainedIn:[NetswipeViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorNormal"]] forState:UIControlStateNormal];
+  if([appearenceConfig objectForKey: @"submitButtonBackgroundColorHighlighted"])
+    [[NetswipeSubmitButton appearanceWhenContainedIn:[NetswipeViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorHighlighted"]] forState:UIControlStateHighlighted];
+  if([appearenceConfig objectForKey: @"submitButtonBackgroundColorDisabled"])
+    [[NetswipeSubmitButton appearanceWhenContainedIn:[NetswipeViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorDisabled"]] forState:UIControlStateDisabled];
+    
+  if([appearenceConfig objectForKey: @"submitButtonTitleColorNormal"])
+    [[NetswipeSubmitButton appearanceWhenContainedIn:[NetswipeViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorNormal"]] forState:UIControlStateNormal];
+  if([appearenceConfig objectForKey: @"submitButtonTitleColorHighlighted"])
+    [[NetswipeSubmitButton appearanceWhenContainedIn:[NetswipeViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorHighlighted"]] forState:UIControlStateHighlighted];
+  if([appearenceConfig objectForKey: @"submitButtonTitleColorDisabled"])
+    [[NetswipeSubmitButton appearanceWhenContainedIn:[NetswipeViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorDisabled"]] forState:UIControlStateDisabled];
+    
+  if([appearenceConfig objectForKey: @"navigationBarTintColor"])  
+    [[UINavigationBar appearanceWhenContainedIn:[NetswipeViewController class], nil] setTintColor:[self colorFromHexString: [appearenceConfig objectForKey: @"navigationBarTintColor"]]];
+  if([appearenceConfig objectForKey: @"navigationBarTitleTextForegroundColor"])  
+    [[UINavigationBar appearanceWhenContainedIn:[NetswipeViewController class], nil] setTitleTextAttributes: @{NSForegroundColorAttributeName:[self colorFromHexString: [appearenceConfig objectForKey: @"navigationBarTitleTextForegroundColor"]]}];
+  if([appearenceConfig objectForKey: @"navigationBarBarTintColor"])  
+    [[UINavigationBar appearanceWhenContainedIn:[NetswipeViewController class], nil] setBarTintColor:[self colorFromHexString: [appearenceConfig objectForKey: @"navigationBarBarTintColor"]]];
+    
+  CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 #pragma mark - NetswipeViewControllerDelegate
 - (void) netswipeViewController: (NetswipeViewController *) controller didStartScanAttemptWithScanReference: (NSString *) scanReference {
 

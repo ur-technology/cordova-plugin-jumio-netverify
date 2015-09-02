@@ -21,6 +21,7 @@ JumioMobile.presentNetverifyController(credentials, configuration, function(resu
 
 ###Netswipe
 ```javascript
+JumioMobile.configureNetswipeControllerAppearence({navigationBarBarTintColor: "#ff0000"});
 var merchantReportingCriteria = "akjd1231sdfasdfa";
 var credentials = new JumioMobile.JumioCredentials("API_KEY", "APP_SECRET");
 var configuration = new JumioMobile.JumioNetswipeConfiguration({

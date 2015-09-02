@@ -20,4 +20,6 @@
 
 - (void)presentNetswipeController:(CDVInvokedUrlCommand *)command;
 
+- (void)configureNetswipeControllerAppearence:(CDVInvokedUrlCommand *)command;
+
 @end
