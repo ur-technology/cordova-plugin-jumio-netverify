@@ -26,8 +26,10 @@
 
         <resource-file src="src/ios/JumioMobileSDK/Netswipe/NetswipeResources.bundle" />
         <resource-file src="src/ios/JumioMobileSDK/Netswipe/Localizable-Netswipe.strings" />
+        <resource-file src="src/ios/JumioMobileSDK/Netswipe/Netswipe.xcassets" />
         <resource-file src="src/ios/JumioMobileSDK/Netverify/NetverifyResources.bundle" />
         <resource-file src="src/ios/JumioMobileSDK/Netverify/Localizable-Netverify.strings" />
+        <resource-file src="src/ios/JumioMobileSDK/Netverify/Netverify.xcassets" />
 
         <framework src="Accelerate.framework" />
         <framework src="AudioToolbox.framework" />

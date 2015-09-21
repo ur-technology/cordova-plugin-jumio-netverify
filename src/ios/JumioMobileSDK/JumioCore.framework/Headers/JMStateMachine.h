@@ -29,6 +29,7 @@
 - (void)reset;
 
 - (BOOL) isCurrentStateName:(NSString *)name;
+- (JMBaseState *)stateWithName:(NSString *)name;
 - (NSSet*)allStates;
 
 @end

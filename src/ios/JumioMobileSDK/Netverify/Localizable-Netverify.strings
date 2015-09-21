@@ -90,6 +90,7 @@
 "netverify.scan-help-view.button.general-fallback.title" = "There is no code on my ID";
 "netverify.scan-help-view.button.barcode-fallback.title" = "No barcode on my document";
 "netverify.scan-help-view.button.template-matcher-fallback.title" = "Detection not working";
+"netverify.scan-help-view.button.visa-fallback-title" = "I´m not able to scan my VISA";
 "netverify.scan-help-view.general.title" = "How to do it the right way.";
 "netverify.scan-help-view.position-barcode.title" = "Scan the bar code in the highlighted green section.";
 "netverify.scan-help-view.position.passport.title" = "Your personal info is on the passport photo page. The code is at the bottom.";

@@ -23,11 +23,23 @@
 
 @end
 
-@interface NetswipeViewController : UINavigationController
+/**
+ @class NetswipeConfiguration
+ @brief Handle configuration of the Netverify Mobile SDK.
+ */
+@interface NetswipeConfiguration : NSObject
 
-@property (nonatomic, weak) id<NetswipeViewControllerDelegate> netswipeDelegate;
+@property (nonatomic, weak) id<NetswipeViewControllerDelegate> delegate;
 
-@property (nonatomic, assign) NetswipeCreditCardTypes supportedCreditCardTypes;   // Specify which card types your app supports by combining NetswipeCreditCardType constants using the C bitwise OR operator
+@property (nonatomic, strong) NSString* merchantApiToken;                  // The API token of your Jumio merchant account
+@property (nonatomic, strong) NSString* merchantApiSecret;                 // The corresponding API secret
+@property (nonatomic, strong) NSString* merchantReportingCriteria;         // Identify the scan in your reports. Set it to nil if you don't use it. (Maximum characters: 100)
+
+@property (nonatomic, assign) JumioDataCenter dataCenter;                  // Specifiy the DataCenter that should be used
+
+@property (nonatomic, strong) NetswipeCustomScanOverlayViewController *customOverlay;  //Set the optional implementation of a custom overlay view controller
+
+@property (nonatomic, assign) NetswipeCreditCardTypes supportedCreditCardTypes;  // Specify which card types your app supports by combining NetswipeCreditCardType constants using the C bitwise OR operator
 @property (nonatomic, assign) BOOL expiryRequired;                          // Enable scanning of expiry date (default: YES)
 @property (nonatomic, assign) BOOL expiryEditable;                          // Set the expiry field editable (default: NO)
 @property (nonatomic, assign) BOOL cvvRequired;                             // Require cvv input by the user (default: YES)
@@ -37,24 +49,13 @@
 @property (nonatomic, assign) BOOL cardHolderNameRequired;                  // Enable scanning of card holder name (default: NO)
 @property (nonatomic, assign) BOOL cardHolderNameEditable;                  // User may edit the scanned card holder name (default: NO)
 @property (nonatomic, assign) BOOL sortCodeAndAccountNumberRequired;        // Enable scanning of sort code and account number (default: NO)
-@property (nonatomic, strong) NSString* name;                      // Optional name which the card holder name gets comared with in case property cardHolderNameRequired is set to YES. The value of name must be of format <firstname> <lastname>.
-
-@property (nonatomic, strong) NSString *merchantReportingCriteria;          // Identify the scan in your reports. Set it to nil if you don't use it. (Maximum characters: 100)
+@property (nonatomic, strong) NSString* name;                               // Optional name which the card holder name gets comared with in case property cardHolderNameRequired is set to YES. The value of name must be of format <firstname> <lastname>.
 
 @property (nonatomic, assign) BOOL vibrationEffectEnabled;                  // The device will vibrate shortly if a card is detected.
 @property (nonatomic, strong) NSString* soundEffect;                        // Set the file name to a sound file to give a short audio feedback to the user when the card is detected.
 @property (nonatomic, assign) BOOL enableFlashOnScanStart;                  // Automatically enable flash when scan is started
 @property (nonatomic, assign) JumioCameraPosition cameraPosition;           // Set the default camera position
-
-/** Create an instance of NetswipeViewController.
- @param apiToken The API token of your Jumio merchant account
- @param apiSecret The corresponding API secret
- @param reportingCriteria Identify the scan in your reports (Maximum characters: 100)
- @param netswipeDelegate The delegate implementing the NetswipeViewControllerDelegate protocol
- @param dataCenter The data center your merchant account is created at
- @param customOverlay The optional implementation of a custom overlay view controller, pass nil to use default behavior
- @return An initialized NetswipeViewController instance */
-- (id) initWithMerchantApiToken:(NSString*)apiToken apiSecret:(NSString*)apiSecret merchantReportingCriteria:(NSString*)reportingCriteria delegate:(id<NetswipeViewControllerDelegate>)netswipeDelegate dataCenter: (JumioDataCenter) dataCenter customOverlay:(NetswipeCustomScanOverlayViewController *)overlayViewController;
+@property (nonatomic, strong) NSString* adyenPublicKey;                     // Use the following method to provide the Adyen Public Key. This activates the generation of an encrypted Adyen payment data object.
 
 /** Custom fields the user is asked to fill in to finish a scan. Retrievable via the fieldId in NetswipeCardInformation.
  @param fieldId Unique ID of your field
@@ -72,6 +73,27 @@
  @param required If YES it cannot be nil. resetValueText will not available
  @param resetValueText value within the UIPickerView that resets the value to nil */
 - (void) addCustomField: (NSString*) fieldId title: (NSString*) title hint: (NSString*) hint values: (NSArray*) values required: (BOOL) required resetValueText: (NSString *) resetValueText;
+
+@end
+
+/**
+ @class NetswipeViewController
+ @brief Handle setup and presentation of the Netverify Mobile SDK.
+ */
+@interface NetswipeViewController : UINavigationController
+
+/** Create an instance of NetswipeViewController.
+ @param NetswipeConfigration The configuration that is used for the current instance
+ @return An initialized NetswipeViewController instance
+ */
+- (id) initWithConfiguration:(NetswipeConfiguration *)configuration;
+
+/** Update the Configuration of the Netverify SDK.
+ The configuration can only be updated when the NetverifyViewController is dismissed and not visible.
+ @param NetverifyConfigration The configuration that is used for the current instance
+ @return YES if configuration was updated successfully
+ */
+- (BOOL) updateConfiguration:(NetswipeConfiguration *)configuration;
 
 /** Returns the Netswipe Mobile SDK version. */
 - (NSString*) sdkVersion;

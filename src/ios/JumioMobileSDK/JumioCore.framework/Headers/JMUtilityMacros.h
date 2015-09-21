@@ -17,6 +17,7 @@
 #define IS_IPHONE_WITH_FOUR_INCH_SCREEN  (INTERFACE_IDIOM_IS_PHONE && [[UIScreen mainScreen] bounds].size.height == 568)? YES : NO
 #define IS_IPHONE_WITH_THREE_INCH_SCREEN  (INTERFACE_IDIOM_IS_PHONE && [[UIScreen mainScreen] bounds].size.height == 480)? YES : NO
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS9 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
 
 #define NSStringFromBOOL(boolValue) boolValue? @"YES" : @"NO"
 

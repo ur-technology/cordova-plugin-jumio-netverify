@@ -51,6 +51,7 @@ typedef NSUInteger NetswipeUserInterfaceOrientations;
 
 @property (nonatomic, assign) BOOL nameMatch;                              // Result of name comparison based on the Levenshtein distance algorithm if property name was set (default if cardHolderNameRequired is not enabled: NO)
 @property (nonatomic, assign) NSInteger nameDistance;                      // The Levenshtein distance of cardHolderName and the property name (default if cardHolderNameRequired is not enabled: -1).
+@property (nonatomic, strong) NSString *encryptedAdyenString;              // The Encrypted ADYEN string
 
 /**
  Retrieve the value of a custom field by its field identifier.

@@ -103,7 +103,7 @@
 - (void) toggleCamera;
 - (void) manualFocusInEffectFor:(float)second;
 
-- (CGSize) imageFrameSizeForCurrentConfigurationWithoutPadding;
+- (CGSize) imageFrameSizeForCurrentConfigurationWithPadding;
 - (CGSize) imageFrameSizeForCurrentConfiguration;
 
 - (UIImage*) imageFromCurrentRawBGRABuffer;

@@ -6,23 +6,19 @@
 //  Copyright (c) 2013 Jumio Inc. All rights reserved.
 //
 
-
+#import "JMUtilityMacros.h"
 
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 
 
-static NSString *const NSWFontName_OCR = @"OCRAExtended";
-static NSString *const NSWFontName_HelveticaLight = @"Helvetica-Light";
-static NSString *const NSWFontName_HelveticaNeueLight = @"HelveticaNeue-Light";
-static NSString *const NSWFontName_HelveticaBoldOblique = @"Helvetica-BoldOblique";
-static NSString *const NSWFontName_HelveticaNeueBold = @"HelveticaNeue-Bold";
-static NSString *const JMFontNameHelveticaNeueRegular = @"HelveticaNeue";
-static NSString *const JMFontName_HelveticaNeueMedium = @"HelveticaNeue-Medium";
+static inline UIFont* JMFontLight(float size) {if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS9) {return [UIFont systemFontOfSize:size weight:UIFontWeightLight];} else { return [UIFont fontWithName: @"HelveticaNeue-Light" size:size];}}
+static inline UIFont* JMFontRegular(float size) {if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS9) {return [UIFont systemFontOfSize:size weight:UIFontWeightRegular];} else { return [UIFont fontWithName: @"HelveticaNeue" size:size];}}
+static inline UIFont* JMFontMedium(float size) {if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS9) {return [UIFont systemFontOfSize:size weight:UIFontWeightMedium];} else { return [UIFont fontWithName: @"HelveticaNeue-Medium" size:size];}}
+static inline UIFont* JMFontBold(float size) {if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS9) {return [UIFont systemFontOfSize:size weight:UIFontWeightBold];} else { return [UIFont fontWithName: @"HelveticaNeue-Bold" size:size];}}
+static inline UIFont* JMFontBoldOblique(float size) {if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_IOS9) {return [UIFont fontWithName:@".SFUIText-BoldItalic" size:size];} else { return [UIFont fontWithName: @"HelveticaNeue-BoldItalic" size:size];}}
 
-#define JMFontNavigationBar_HelveticaLight [UIFont fontWithName: NSWFontName_HelveticaNeueLight size: 22]
-#define JMFontTableViewCellTitle [UIFont fontWithName:NSWFontName_HelveticaNeueLight size:18]
-#define JMFontTableViewCellSubtitle [UIFont fontWithName:JMFontNameHelveticaNeueRegular size:13]
+static NSString *const NSWFontName_OCR = @"OCRAExtended";
 
 #define JMColor_ExtraDarkGray RGBCOLOR(51.f, 51.f, 51.f)
 #define JMColor_DarkGray RGBCOLOR(102.f, 102.f, 102.f)
@@ -35,3 +31,7 @@ static NSString *const JMFontName_HelveticaNeueMedium = @"HelveticaNeue-Medium";
 #define JMColor_FlashIndicator [UIColor whiteColor]
 #define JMColor_JumioWashedWhiteTitleColor RGBCOLOR(211.0, 211.0, 211.0)
 #define JMColor_white RGBCOLOR(255.0, 255.0, 255.0)
+
+#define JMColor_cancelButton RGBCOLOR(103.0, 103.0, 103.0)
+#define JMColor_cancelButtonHighlighted [UIColor darkGrayColor]
+#define JMColor_cancelButtonDisabled [UIColor lightGrayColor]

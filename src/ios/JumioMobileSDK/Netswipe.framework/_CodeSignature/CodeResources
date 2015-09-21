@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/NetswipeCardInformation.h</key>
 		<data>
-		F2bTBJleUdg1TvNJCDLeNfGH1KU=
+		2xZchGfgq/vLbQM4ZfOpwywWTYM=
 		</data>
 		<key>Headers/NetswipeCustomScanOverlayViewController.h</key>
 		<data>
@@ -26,15 +26,15 @@
 		</data>
 		<key>Headers/NetswipeViewController.h</key>
 		<data>
-		3PPsGhnAkjCX6bSyYr2KMCjJmM8=
+		aCdiyz3nTfhVEyMfbbAQ7G+elKo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		kf3Hyt+b2DbTtAYoIMWm4sO7lHU=
+		6LpB1yP4zpSGCNtXsTLJj2wrf8A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		tR3PYsMwQgxuaN5uQhTXAA1+q0Y=
+		5aaOcOcPGXhEbiQwJnfIlzG49SI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -45,7 +45,7 @@
 		</data>
 		<key>Headers/NetswipeCardInformation.h</key>
 		<data>
-		F2bTBJleUdg1TvNJCDLeNfGH1KU=
+		2xZchGfgq/vLbQM4ZfOpwywWTYM=
 		</data>
 		<key>Headers/NetswipeCustomScanOverlayViewController.h</key>
 		<data>
@@ -61,11 +61,11 @@
 		</data>
 		<key>Headers/NetswipeViewController.h</key>
 		<data>
-		3PPsGhnAkjCX6bSyYr2KMCjJmM8=
+		aCdiyz3nTfhVEyMfbbAQ7G+elKo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		tR3PYsMwQgxuaN5uQhTXAA1+q0Y=
+		5aaOcOcPGXhEbiQwJnfIlzG49SI=
 		</data>
 	</dict>
 	<key>rules</key>

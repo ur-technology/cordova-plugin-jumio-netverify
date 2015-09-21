@@ -14,19 +14,27 @@
 		</data>
 		<key>Headers/JMAppearance.h</key>
 		<data>
-		zspqM71GaxyPtA5wHkYX2IlNE3U=
+		EgtXO7Qtg1w6ODZdGi+kC5its1k=
 		</data>
 		<key>Headers/JMAutolayoutUtilities.h</key>
 		<data>
-		vOtMh2Rt/uY4g5TjuzHuJoyT0G0=
+		MDF5gqa4eLbFtDqEJzGTevi7utE=
 		</data>
 		<key>Headers/JMBaseCollapsableView.h</key>
 		<data>
-		0Mxa3IwiFqCWn8SXPSiNw2Hlj9w=
+		oJP4FWP+sAckaTFtm1AQMYPxHXs=
 		</data>
 		<key>Headers/JMBaseInfoView.h</key>
 		<data>
 		T7yX+UXRtfEBOSgumaLqU9W6SPQ=
+		</data>
+		<key>Headers/JMBaseServerTask+Utilities.h</key>
+		<data>
+		DHdSEMO+kyzBamYWvlsj1oainCk=
+		</data>
+		<key>Headers/JMBaseServerTask.h</key>
+		<data>
+		j1zxZoOKiwihSlJsOk+Jvl+gOcQ=
 		</data>
 		<key>Headers/JMBaseState.h</key>
 		<data>
@@ -50,7 +58,7 @@
 		</data>
 		<key>Headers/JMCaptureSessionManager.h</key>
 		<data>
-		DhHG5kKu+RZHJ1H7K5Cd95oFDqk=
+		EVhIjjKdGo5OHTJiCs+rW/ZvuAw=
 		</data>
 		<key>Headers/JMCertificateBundle.h</key>
 		<data>
@@ -59,10 +67,6 @@
 		<key>Headers/JMConstants.h</key>
 		<data>
 		67ly1NkVdzOjC6dhtUPOKwpWewM=
-		</data>
-		<key>Headers/JMDownloadOperation.h</key>
-		<data>
-		DuII9TgAeHyOluBz0AXN/Z3PD2Y=
 		</data>
 		<key>Headers/JMExtendedScanDebugging.h</key>
 		<data>
@@ -90,11 +94,15 @@
 		</data>
 		<key>Headers/JMNetworkState.h</key>
 		<data>
-		LxD52k2HQXFxpsh/NROLOuTbQXs=
+		TpLEmZN7StF2G55Ba6xxuznrohw=
 		</data>
-		<key>Headers/JMOperationsController.h</key>
+		<key>Headers/JMNetworkStateConstants.h</key>
 		<data>
-		RsMzblQMjBmbT5olhfPpuVUqtX4=
+		Km9D0uj9GpbZMbWyJIvLO6vpCFo=
+		</data>
+		<key>Headers/JMNetworkStateMachine.h</key>
+		<data>
+		cvSIA94+psQKW2OtA+P9qP9Uq40=
 		</data>
 		<key>Headers/JMResourceLoader.h</key>
 		<data>
@@ -122,7 +130,7 @@
 		</data>
 		<key>Headers/JMSDKStyle.h</key>
 		<data>
-		h5sV3TT/GDMK9W0/571OcBJqJQ8=
+		t3qu+8CZiG+dejLj2W97eZUGrgI=
 		</data>
 		<key>Headers/JMSeparatorView.h</key>
 		<data>
@@ -138,7 +146,7 @@
 		</data>
 		<key>Headers/JMStateMachine.h</key>
 		<data>
-		Payu3PUGGb3svsB3fKAHRb4LYTM=
+		0vpkmnbcbcxNz6xhBJzBLdtDTtI=
 		</data>
 		<key>Headers/JMStateTransition.h</key>
 		<data>
@@ -178,11 +186,11 @@
 		</data>
 		<key>Headers/JMUtilityMacros.h</key>
 		<data>
-		JQp+iZCdTqSQs0sVBWI2jYVm2ck=
+		kkh3e31msinjc1WcUyAC9BQDjgE=
 		</data>
 		<key>Headers/JumioCore.h</key>
 		<data>
-		EEf5YzbCPTESE277sX1lWS9KV2Y=
+		Sw8J88jzw1yhgt7rNb164kGjmzo=
 		</data>
 		<key>Headers/NSData+Base64.h</key>
 		<data>
@@ -218,7 +226,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		GDFlTOY8CrmJRyQP8Fd4YVg9nH8=
+		VVJGSmkN6K3PMiizK9MXryMTqjw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -237,19 +245,27 @@
 		</data>
 		<key>Headers/JMAppearance.h</key>
 		<data>
-		zspqM71GaxyPtA5wHkYX2IlNE3U=
+		EgtXO7Qtg1w6ODZdGi+kC5its1k=
 		</data>
 		<key>Headers/JMAutolayoutUtilities.h</key>
 		<data>
-		vOtMh2Rt/uY4g5TjuzHuJoyT0G0=
+		MDF5gqa4eLbFtDqEJzGTevi7utE=
 		</data>
 		<key>Headers/JMBaseCollapsableView.h</key>
 		<data>
-		0Mxa3IwiFqCWn8SXPSiNw2Hlj9w=
+		oJP4FWP+sAckaTFtm1AQMYPxHXs=
 		</data>
 		<key>Headers/JMBaseInfoView.h</key>
 		<data>
 		T7yX+UXRtfEBOSgumaLqU9W6SPQ=
+		</data>
+		<key>Headers/JMBaseServerTask+Utilities.h</key>
+		<data>
+		DHdSEMO+kyzBamYWvlsj1oainCk=
+		</data>
+		<key>Headers/JMBaseServerTask.h</key>
+		<data>
+		j1zxZoOKiwihSlJsOk+Jvl+gOcQ=
 		</data>
 		<key>Headers/JMBaseState.h</key>
 		<data>
@@ -273,7 +289,7 @@
 		</data>
 		<key>Headers/JMCaptureSessionManager.h</key>
 		<data>
-		DhHG5kKu+RZHJ1H7K5Cd95oFDqk=
+		EVhIjjKdGo5OHTJiCs+rW/ZvuAw=
 		</data>
 		<key>Headers/JMCertificateBundle.h</key>
 		<data>
@@ -282,10 +298,6 @@
 		<key>Headers/JMConstants.h</key>
 		<data>
 		67ly1NkVdzOjC6dhtUPOKwpWewM=
-		</data>
-		<key>Headers/JMDownloadOperation.h</key>
-		<data>
-		DuII9TgAeHyOluBz0AXN/Z3PD2Y=
 		</data>
 		<key>Headers/JMExtendedScanDebugging.h</key>
 		<data>
@@ -313,11 +325,15 @@
 		</data>
 		<key>Headers/JMNetworkState.h</key>
 		<data>
-		LxD52k2HQXFxpsh/NROLOuTbQXs=
+		TpLEmZN7StF2G55Ba6xxuznrohw=
 		</data>
-		<key>Headers/JMOperationsController.h</key>
+		<key>Headers/JMNetworkStateConstants.h</key>
 		<data>
-		RsMzblQMjBmbT5olhfPpuVUqtX4=
+		Km9D0uj9GpbZMbWyJIvLO6vpCFo=
+		</data>
+		<key>Headers/JMNetworkStateMachine.h</key>
+		<data>
+		cvSIA94+psQKW2OtA+P9qP9Uq40=
 		</data>
 		<key>Headers/JMResourceLoader.h</key>
 		<data>
@@ -345,7 +361,7 @@
 		</data>
 		<key>Headers/JMSDKStyle.h</key>
 		<data>
-		h5sV3TT/GDMK9W0/571OcBJqJQ8=
+		t3qu+8CZiG+dejLj2W97eZUGrgI=
 		</data>
 		<key>Headers/JMSeparatorView.h</key>
 		<data>
@@ -361,7 +377,7 @@
 		</data>
 		<key>Headers/JMStateMachine.h</key>
 		<data>
-		Payu3PUGGb3svsB3fKAHRb4LYTM=
+		0vpkmnbcbcxNz6xhBJzBLdtDTtI=
 		</data>
 		<key>Headers/JMStateTransition.h</key>
 		<data>
@@ -401,11 +417,11 @@
 		</data>
 		<key>Headers/JMUtilityMacros.h</key>
 		<data>
-		JQp+iZCdTqSQs0sVBWI2jYVm2ck=
+		kkh3e31msinjc1WcUyAC9BQDjgE=
 		</data>
 		<key>Headers/JumioCore.h</key>
 		<data>
-		EEf5YzbCPTESE277sX1lWS9KV2Y=
+		Sw8J88jzw1yhgt7rNb164kGjmzo=
 		</data>
 		<key>Headers/NSData+Base64.h</key>
 		<data>

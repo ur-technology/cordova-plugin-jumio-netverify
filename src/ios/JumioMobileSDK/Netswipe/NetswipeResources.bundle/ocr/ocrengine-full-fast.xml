@@ -56,7 +56,7 @@
     <upturned_card_detection>false</upturned_card_detection>
     <check_china_union_pay_luhn_code>false</check_china_union_pay_luhn_code>
     <check_ump>true</check_ump>
-    <server_mode>false</server_mode>
+    <server_mode>true</server_mode>
     <integrate_rejected_results>true</integrate_rejected_results>
     <num_of_quadrangles_to_process>1</num_of_quadrangles_to_process>
     <expiry_recognition           recognize="true" apply_context="true"/>

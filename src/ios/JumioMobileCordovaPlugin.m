@@ -12,7 +12,8 @@
 - (void)netverifySdkVersion:(CDVInvokedUrlCommand *)command {
     NSDictionary* credentials = [command.arguments objectAtIndex:0];
 
-    NetverifyViewController* netverifyViewController = [self instantiateNetverifyViewController: credentials];
+    NetverifyConfiguration* netverifyConfigObject = [self createNetverifyConfigurationObjectWithCredentials: credentials];
+    NetverifyViewController* netverifyViewController = [[NetverifyViewController alloc] initWithConfiguration:netverifyConfigObject];
     NSString *sdkVersion = [netverifyViewController sdkVersion];
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
@@ -30,29 +31,31 @@
 
 - (void)presentNetverifyController:(CDVInvokedUrlCommand *)command {
   NSDictionary* credentials = [command.arguments objectAtIndex:0];
-  NetverifyViewController* netverifyViewController = [self instantiateNetverifyViewController: credentials];
+  NetverifyConfiguration* netverifyConfigObject = [self createNetverifyConfigurationObjectWithCredentials: credentials];
 
   NSDictionary* netverifyConfiguration = [command.arguments objectAtIndex:1];
-  [self setUpProperty: @"preselectedCountry" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"merchantScanReference" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"merchantReportingCriteria" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"customerId" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"callbackUrl" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"requireVerification" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"requireFaceMatch" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"showFlagOnInfoBar" from: netverifyConfiguration on: netverifyViewController];
-  [self setUpProperty: @"enableVisa" from: netverifyConfiguration on: netverifyViewController];
 
-  [self setUpEnumProperty: @"preselectedDocumentType" withPossibleValues: [self allNVDocumentTypeToStringCode] from: netverifyConfiguration on: netverifyViewController];
-  [self setUpEnumProperty: @"preselectedDocumentVariant" withPossibleValues: [self allNVDocumentVariantToStringCode] from: netverifyConfiguration on: netverifyViewController];
-  [self setUpEnumProperty: @"cameraPosition" withPossibleValues: [self allJumioCameraPositionToStringCode] from: netverifyConfiguration on: netverifyViewController];
+  [self setUpProperty: @"preselectedCountry" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"merchantScanReference" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"merchantReportingCriteria" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"customerId" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"callbackUrl" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"requireVerification" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"requireFaceMatch" from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpProperty: @"showFlagOnInfoBar" from: netverifyConfiguration on: netverifyConfigObject];
+
+  [self setUpEnumProperty: @"preselectedDocumentType" withPossibleValues: [self allNVDocumentTypeToStringCode] from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpEnumProperty: @"preselectedDocumentVariant" withPossibleValues: [self allNVDocumentVariantToStringCode] from: netverifyConfiguration on: netverifyConfigObject];
+  [self setUpEnumProperty: @"cameraPosition" withPossibleValues: [self allJumioCameraPositionToStringCode] from: netverifyConfiguration on: netverifyConfigObject];
 
   if( [netverifyConfiguration objectForKey: @"firstName"] != [NSNull null] && [netverifyConfiguration objectForKey: @"lastName"] != [NSNull null]){
     NSString* firstName = [netverifyConfiguration objectForKey: @"firstName"];
     NSString* lastName = [netverifyConfiguration objectForKey: @"lastName"];
-    [netverifyViewController setFirstName: firstName lastName: lastName];
-    netverifyViewController.name = [[firstName stringByAppendingString: @" "] stringByAppendingString: lastName];
+    [netverifyConfigObject setFirstName: firstName lastName: lastName];
+    netverifyConfigObject.name = [[firstName stringByAppendingString: @" "] stringByAppendingString: lastName];
   }
+
+  NetverifyViewController* netverifyViewController = [[NetverifyViewController alloc] initWithConfiguration:netverifyConfigObject];
 
   self.command = command;
   [self.viewController presentViewController: netverifyViewController animated: YES completion: nil];
@@ -62,18 +65,18 @@
   NSDictionary* appearenceConfig = [command.arguments objectAtIndex:0];
 
   if([appearenceConfig objectForKey: @"submitButtonBackgroundColorNormal"])
-    [[NetverifySubmitButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorNormal"]] forState:UIControlStateNormal];
+    [[NetverifyPositiveButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorNormal"]] forState:UIControlStateNormal];
   if([appearenceConfig objectForKey: @"submitButtonBackgroundColorHighlighted"])
-    [[NetverifySubmitButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorHighlighted"]] forState:UIControlStateHighlighted];
+    [[NetverifyPositiveButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorHighlighted"]] forState:UIControlStateHighlighted];
   if([appearenceConfig objectForKey: @"submitButtonBackgroundColorDisabled"])
-    [[NetverifySubmitButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorDisabled"]] forState:UIControlStateDisabled];
-    
+    [[NetverifyPositiveButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setBackgroundColor: [self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonBackgroundColorDisabled"]] forState:UIControlStateDisabled];
+  
   if([appearenceConfig objectForKey: @"submitButtonTitleColorNormal"])
-    [[NetverifySubmitButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorNormal"]] forState:UIControlStateNormal];
+    [[NetverifyPositiveButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorNormal"]] forState:UIControlStateNormal];
   if([appearenceConfig objectForKey: @"submitButtonTitleColorHighlighted"])
-    [[NetverifySubmitButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorHighlighted"]] forState:UIControlStateHighlighted];
+    [[NetverifyPositiveButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorHighlighted"]] forState:UIControlStateHighlighted];
   if([appearenceConfig objectForKey: @"submitButtonTitleColorDisabled"])
-    [[NetverifySubmitButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorDisabled"]] forState:UIControlStateDisabled];
+    [[NetverifyPositiveButton appearanceWhenContainedIn:[NetverifyViewController class], nil] setTitleColor:[self colorFromHexString: [appearenceConfig objectForKey: @"submitButtonTitleColorDisabled"]] forState:UIControlStateDisabled];
     
   if([appearenceConfig objectForKey: @"navigationBarTintColor"])  
     [[UINavigationBar appearanceWhenContainedIn:[NetverifyViewController class], nil] setTintColor:[self colorFromHexString: [appearenceConfig objectForKey: @"navigationBarTintColor"]]];
@@ -158,7 +161,9 @@
 - (void)netswipeSdkVersion:(CDVInvokedUrlCommand *)command {
     NSDictionary* credentials = [command.arguments objectAtIndex:0];
 
-    NetswipeViewController* netswipeViewController =  [self instantiateNetswipeViewController: credentials merchantReportingCriteria: nil];
+    NetswipeConfiguration* netswipeConfigObject = [self createNetswipeConfigurationObjectWithCredentials: credentials];
+    NetswipeViewController* netswipeViewController = [[NetswipeViewController alloc] initWithConfiguration:netswipeConfigObject];
+
     NSString *sdkVersion = [netswipeViewController sdkVersion];
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
@@ -184,23 +189,24 @@
 - (void)presentNetswipeController:(CDVInvokedUrlCommand *)command{
   NSDictionary* credentials = [command.arguments objectAtIndex:0];
   NSString* merchantReportingCriteria = [command.arguments objectAtIndex:1];
-  NetswipeViewController* netswipeViewController = [self instantiateNetswipeViewController: credentials merchantReportingCriteria: merchantReportingCriteria];
+
+  NetswipeConfiguration* netswipeConfigObject = [self createNetswipeConfigurationObjectWithCredentials: credentials];
 
   NSDictionary* netswipeConfiguration = [command.arguments objectAtIndex:2];
-  [self setUpProperty: @"merchantReportingCriteria" from: netswipeConfiguration on: netswipeConfiguration];
-  [self setUpProperty: @"cardHolderNameRequired" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"sortCodeAndAccountNumberRequired" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"manualEntryEnabled" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"expiryRequired" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"cvvRequired" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"expiryEditable" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"cardHolderNameEditable" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"soundEffect" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"vibrationEffectEnabled" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"enableFlashOnScanStart" from: netswipeConfiguration on: netswipeViewController];
-  [self setUpProperty: @"cardNumberMaskingEnabled" from: netswipeConfiguration on: netswipeViewController];
+  [self setUpProperty: @"merchantReportingCriteria" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"cardHolderNameRequired" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"sortCodeAndAccountNumberRequired" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"manualEntryEnabled" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"expiryRequired" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"cvvRequired" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"expiryEditable" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"cardHolderNameEditable" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"soundEffect" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"vibrationEffectEnabled" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"enableFlashOnScanStart" from: netswipeConfiguration on: netswipeConfigObject];
+  [self setUpProperty: @"cardNumberMaskingEnabled" from: netswipeConfiguration on: netswipeConfigObject];
 
-  [self setUpEnumProperty: @"cameraPosition" withPossibleValues: [self allJumioCameraPositionToStringCode] from: netswipeConfiguration on: netswipeViewController];  
+  [self setUpEnumProperty: @"cameraPosition" withPossibleValues: [self allJumioCameraPositionToStringCode] from: netswipeConfiguration on: netswipeConfigObject];  
 
   if([netswipeConfiguration objectForKey: @"supportedCreditCardTypes"]){
     NetswipeCreditCardTypes cardTypes;
@@ -209,14 +215,16 @@
       NSArray *temp = [[self allNetswipeCreditCardTypeToStringCode] allKeysForObject: cardTypeStr];
       cardTypes = cardTypes | [[temp objectAtIndex:0] intValue];
     }    
-    netswipeViewController.supportedCreditCardTypes = cardTypes;
+    netswipeConfigObject.supportedCreditCardTypes = cardTypes;
   }
 
   if( [netswipeConfiguration objectForKey: @"firstName"] != [NSNull null] && [netswipeConfiguration objectForKey: @"lastName"] != [NSNull null]){
     NSString* firstName = [netswipeConfiguration objectForKey: @"firstName"];
     NSString* lastName = [netswipeConfiguration objectForKey: @"lastName"];
-    netswipeViewController.name = [[firstName stringByAppendingString: @" "] stringByAppendingString: lastName];
+    netswipeConfigObject.name = [[firstName stringByAppendingString: @" "] stringByAppendingString: lastName];
   }
+
+  NetswipeViewController* netswipeViewController = [[NetswipeViewController alloc] initWithConfiguration:netswipeConfigObject];
 
   self.command = command;
   [self.viewController presentViewController: netswipeViewController animated: YES completion: nil];
@@ -300,27 +308,26 @@
 
 #pragma mark - Internal Jumio helpers
 
-- (void)setUpProperty: (NSString* ) propertyName from: (NSDictionary*) config on: (NSObject*) controller {
+- (void)setUpProperty: (NSString* ) propertyName from: (NSDictionary*) config on: (NSObject*) configObject {
   NSObject* propertyValue = [config objectForKey: propertyName];
   if(propertyValue != [NSNull null]){
-    [controller setValue: propertyValue forKey: propertyName];
+    [configObject setValue: propertyValue forKey: propertyName];
   }
 }
 
-- (void)setUpEnumProperty: (NSString* ) propertyName withPossibleValues: (NSDictionary*) enumToStringCodeDictionary from: (NSDictionary*) config on: (NSObject*) controller {
+- (void)setUpEnumProperty: (NSString* ) propertyName withPossibleValues: (NSDictionary*) enumToStringCodeDictionary from: (NSDictionary*) config on: (NSObject*) configObject {
   NSObject* propertyValue = [config objectForKey: propertyName];
   if(propertyValue != [NSNull null]){
-    [controller setValue: [[enumToStringCodeDictionary allKeysForObject: propertyValue] lastObject] forKey: propertyName];
+    [configObject setValue: [[enumToStringCodeDictionary allKeysForObject: propertyValue] lastObject] forKey: propertyName];
   }
 }
 
 - (NSDictionary*) allNVDocumentTypeToStringCode {
   return [[NSDictionary alloc] initWithObjectsAndKeys: 
-    @"UNKNOWN", [NSNumber numberWithInt: NVDocumentTypeUnknown],
-    @"DRIVER_LICENSE", [NSNumber numberWithInt: NVDocumentTypeDriverLicense],
-    @"ID_CARD", [NSNumber numberWithInt: NVDocumentTypeIdentityCard],
-    @"PASSPORT", [NSNumber numberWithInt: NVDocumentTypePassport],
-    @"VISA", [NSNumber numberWithInt: NVDocumentTypeVisa],
+    @"DRIVER_LICENSE", [NSNumber numberWithInt: NetverifyDocumentTypeDriverLicense],
+    @"ID_CARD", [NSNumber numberWithInt: NetverifyDocumentTypeIdentityCard],
+    @"PASSPORT", [NSNumber numberWithInt: NetverifyDocumentTypePassport],
+    @"VISA", [NSNumber numberWithInt: NetverifyDocumentTypeVisa],
     nil];
 }
 
@@ -368,12 +375,22 @@
   return formattedDateString;
 }
 
-- (NetverifyViewController*) instantiateNetverifyViewController: (NSDictionary*) credentials {
-  return [[NetverifyViewController alloc] initWithMerchantApiToken: credentials[@"apiToken"] apiSecret: credentials[@"apiSecret"] delegate: self dataCenter: JumioDataCenterEU];
+- (NetverifyConfiguration* ) createNetverifyConfigurationObjectWithCredentials: (NSDictionary*) credentials {
+  NetverifyConfiguration *config = [NetverifyConfiguration new];
+  config.dataCenter = JumioDataCenterEU;
+  config.delegate = self;
+  config.merchantApiToken = credentials[@"apiToken"];
+  config.merchantApiSecret = credentials[@"apiSecret"];
+  return config;
 }
 
-- (NetswipeViewController*) instantiateNetswipeViewController: (NSDictionary*) credentials merchantReportingCriteria: (NSString*) merchantReportingCriteria {
-  return [[NetswipeViewController alloc] initWithMerchantApiToken: credentials[@"apiToken"] apiSecret: credentials[@"apiSecret"] merchantReportingCriteria: nil delegate: self dataCenter: JumioDataCenterEU customOverlay: nil];
+- (NetswipeConfiguration* ) createNetswipeConfigurationObjectWithCredentials: (NSDictionary*) credentials {
+  NetswipeConfiguration *config = [NetswipeConfiguration new];
+  config.dataCenter = JumioDataCenterEU;
+  config.delegate = self;
+  config.merchantApiToken = credentials[@"apiToken"];
+  config.merchantApiSecret = credentials[@"apiSecret"];
+  return config;
 }
 
 // Assumes input like "#00FF00" (#RRGGBB).

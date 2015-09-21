@@ -8,6 +8,17 @@
 
 #import "JMState.h"
 
+
+@protocol JMNetworkStateImplementation <NSObject>
+
+@required
+- (void) willEnterStatePendingBlockImplementation;
+- (void) didEnterStateErrorBlock;
+- (void) didEnterStateSucessBlock;
+
+@end
+
+
 @interface JMNetworkState : JMState <NSCopying>
 
 @property (nonatomic, assign, readonly) BOOL isCanceled;
@@ -19,5 +30,14 @@
 - (void)didFailTask;
 
 - (void)cancel;
+
+- (void) initStateMachine;
+
+- (NSString *) baseURL;
+- (NSString *) merchantApiToken;
+- (NSString *) merchantApiSecret;
+
+- (BOOL) isCurrentStatusSuccess;
+- (BOOL) isCurrentStatusError;
 
 @end

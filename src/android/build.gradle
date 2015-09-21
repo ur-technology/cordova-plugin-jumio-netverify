@@ -1,13 +1,13 @@
 repositories {
     maven {
-    url 'http://mobile-sdk.jumio.com'
+      url 'http://mobile-sdk.jumio.com'
   }
 }
 
 dependencies {
-  compile('com.jumio.android:jumio-mobile-sdk:1.6.0@aar')
-  compile('com.jumio.android:netverify-resources:1.6.0@aar')
-  compile('com.jumio.android:netswipe-resources:1.6.0@aar')
-  compile('com.android.support:appcompat-v7:22.2.0')
-  compile('com.android.support:cardview-v7:22.2.0')
+  compile('com.jumio.android:jumio-mobile-sdk:1.7.0@aar')
+  compile('com.jumio.android:netverify-resources:1.7.0@aar')
+  compile('com.jumio.android:netswipe-resources:1.7.0@aar')
+  compile('com.jumio.android:javadoc:1.7.0')
+  compile('com.android.support:appcompat-v7:23.0.1')
 }

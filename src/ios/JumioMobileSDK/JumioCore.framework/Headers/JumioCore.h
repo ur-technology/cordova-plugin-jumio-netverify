@@ -21,6 +21,10 @@ FOUNDATION_EXPORT const unsigned char JumioCoreVersionString[];
 #import <JumioCore/JMAlertViewController.h>
 #import <JumioCore/JMAppearance.h>
 #import <JumioCore/JMBaseCollapsableView.h>
+#import <JumioCore/JMBaseServerTask+Utilities.h>
+#import <JumioCore/JMBaseServerTask.h>
+#import <JumioCore/JMNetworkStateConstants.h>
+#import <JumioCore/JMNetworkStateMachine.h>
 #import <JumioCore/JMRoi.h>
 #import <JumioCore/JMBaseInfoView.h>
 #import <JumioCore/JMBaseTableViewCell.h>
@@ -28,12 +32,10 @@ FOUNDATION_EXPORT const unsigned char JumioCoreVersionString[];
 #import <JumioCore/JMCameraFocusIndicatorView.h>
 #import <JumioCore/JMCaptureSessionManager.h>
 #import <JumioCore/JMCertificateBundle.h>
-#import <JumioCore/JMDownloadOperation.h>
 #import <JumioCore/JMExtendedScanDebugging.h>
 #import <JumioCore/JMImageBundle.h>
 #import <JumioCore/JMLogging.h>
 #import <JumioCore/JMManualEntryButton.h>
-#import <JumioCore/JMOperationsController.h>
 #import <JumioCore/JMResourceLoader.h>
 #import <JumioCore/JMRoiOverlay.h>
 #import <JumioCore/JMRoiSettings.h>

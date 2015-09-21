@@ -18,9 +18,6 @@ extern const CGFloat kJMBaseCollapsableViewDefaultAnimationDuration;
     UIView * _separatorView;
     UIView * _contentView;
     UIView * _contentContainerView;
-    
-    NSMutableArray * _expandedConstraints;
-    NSMutableArray * _collapsedConstraints;
 
     NSLayoutConstraint * _contentViewTopMarginConstraint;
     NSLayoutConstraint * _contentViewBottomMarginConstraint;
@@ -42,6 +39,7 @@ extern const CGFloat kJMBaseCollapsableViewDefaultAnimationDuration;
 
 - (void)willExpandAnimated:(BOOL)animated;
 - (void)didExpandAnimated:(BOOL)animated;
+- (void)expandAnimated:(BOOL)animated;
 
 - (void)willCollapseAnimated:(BOOL)animated;
 - (void)didCollapseAnimated:(BOOL)animated;
@@ -55,5 +53,7 @@ extern const CGFloat kJMBaseCollapsableViewDefaultAnimationDuration;
 - (void)updateViewConstraintsFrom:(NSArray*)constraints;
 
 - (void)updateSuperviewConstraints;
+
+- (CAShapeLayer*)createLayerMask;
 
 @end

@@ -17,11 +17,6 @@
 #import <JumioCore/UIImage+JMUtilities.h>
 #import <JumioCore/NSData+Base64.h>
 #import <JumioCore/JMSDKStyle.h>
-#import "NetverifyMrzData.h"
-#import "NetverifyDocumentData.h"
-#import "NVConstants.h"
-#import "NVCountry.h"
-#import "NVDocument.h"
 #import "NVDefaultLocalizableStrings.h"
 #import <JumioCore/UIImage+JMImage.h>
 #import <JumioCore/NSString+JMLevenshtein.h>

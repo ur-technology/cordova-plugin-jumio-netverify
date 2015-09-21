@@ -10,12 +10,12 @@
 #import <Netverify/NetverifyMrzData.h>
 
 typedef enum {
-    NVDocumentTypeUnknown       = 0,
-    NVDocumentTypePassport      = 1 << 0,
-    NVDocumentTypeDriverLicense = 1 << 1,
-    NVDocumentTypeIdentityCard  = 1 << 2,
-    NVDocumentTypeVisa          = 1 << 3
-} NVDocumentType;
+    NetverifyDocumentTypeAll                = 0,
+    NetverifyDocumentTypePassport           = 1 << 0,
+    NetverifyDocumentTypeDriverLicense      = 1 << 1,
+    NetverifyDocumentTypeIdentityCard       = 1 << 2,
+    NetverifyDocumentTypeVisa               = 1 << 3
+} NetverifyDocumentType;
 
 typedef enum {
     NVGenderUnknown,
@@ -34,7 +34,7 @@ typedef enum {
 }
 
 @property (nonatomic, strong) NSString *selectedCountry;
-@property (nonatomic, assign) NVDocumentType selectedDocumentType;
+@property (nonatomic, assign) NetverifyDocumentType selectedDocumentType;
 
 //ID
 @property (nonatomic, strong) NSString *idNumber;
