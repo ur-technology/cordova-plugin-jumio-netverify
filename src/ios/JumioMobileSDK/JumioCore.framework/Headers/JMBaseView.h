@@ -18,4 +18,5 @@
 - (void) hideSensitiveData:(BOOL)hide;
 - (void) updateViewForOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
+
 @end

@@ -48,16 +48,6 @@ module Netswipe.NetswipeNegativeButton {
     export *
 }
 
-module Netswipe.NetswipeBaseView {
-    header "NetswipeBaseView.h"
-    export *
-}
-
-module Netswipe.NetswipeScanOverlay{
-    header "NetswipeScanOverlay.h"
-    export *
-}
-
 module Netswipe.NetswipeNavigationBarTitleImageView {
     header "NetswipeNavigationBarTitleImageView.h"
     export *

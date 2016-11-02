@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetverifyViewController.h"
 
-@interface NetverifyBackgroundImageView : UIImageView
+@interface NetverifyBackgroundImageView : UIImageView <NetverifyAppearance>
 
 @property (nonatomic, strong) UIImage *backgroundImage UI_APPEARANCE_SELECTOR;
 

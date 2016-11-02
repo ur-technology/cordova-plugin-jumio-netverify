@@ -13,7 +13,6 @@
 @interface JMStringUtilities : NSObject
 
 + (NSDictionary *)stringAttributesDictionaryWithFont:(UIFont * const)font fontColor:(UIColor * const)fontColor shadow:(NSShadow * const)shadow alignment:(NSTextAlignment) alignment;
-+ (NSDictionary *)stringAttributesDictionaryWithFont:(UIFont * const)font fontColor:(UIColor * const)fontColor alignment:(NSTextAlignment) alignment;
 
 + (NSString *) formatString:(NSString *)string forMaximumLength:(NSUInteger)maxLength regex:(NSString *)regex;
 + (NSString *) trimLeadingTrailingWhiteSpaceFromString:(NSString*)string;

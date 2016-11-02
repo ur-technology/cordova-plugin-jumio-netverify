@@ -19,8 +19,7 @@
 @property (nonatomic, assign, readonly) UIRectCorner roundCorners;
 @property (nonatomic, assign, readonly) CGFloat roundCornersRadius;
 @property (nonatomic, assign, readonly) CGFloat contentInset;
-@property (nonatomic, assign)           CGFloat borderWidth;
-@property (nonatomic, strong)           UIColor* borderColor;
+
 
 - (CGSize)cornerRadii;
 - (CGRect)cropRect;

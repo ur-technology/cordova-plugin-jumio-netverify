@@ -48,12 +48,14 @@ extern NSString *const kConfigurationKeyBoundary;
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSString *baseURL;
+@property (nonatomic, strong) NSString *fallbackURL;
 @property (nonatomic, strong) NSString *merchantReportingCriteria;
 @property (nonatomic, strong) NSString *merchantApiToken;
 @property (nonatomic, strong) NSString *merchantApiSecret;
 @property (nonatomic, strong) NSString *trackingId;
 
 @property (nonatomic, strong) NSString *jumioIdScanReference;
+@property (nonatomic, assign) BOOL useFallback;
 
 @end
 
@@ -104,6 +106,12 @@ extern NSString *const kServerTaskHeaderXTrackingIdKey;
  */
 - (instancetype) initWithConfiguration:(JMBaseServerTaskConfiguration *)configuration;
 
+/**
+ @brief Updates internal settings based on the configuration.
+ @discussion When fallback is used some internal settings must be changed(like httpMethod). This method is called in startTask to ensure all internal settings are set according to
+ the current configuration.
+ */
+- (void)updateFromConfiguration;
 
 /**
  @brief Creates the session task with teh specified URL request
@@ -293,6 +301,13 @@ extern NSString *const kServerTaskHeaderXTrackingIdKey;
  */
 - (NSError*)errorFromSystemError:(NSError*)systemError;
 
+/**
+ @brief Returns the time (in miliseconds) since the task has started.
+ @discussion Returns the time since the request has started by calling:
+ @code - (void)start:(void(^)(JMBaseServerTaskResult*))completionBlock error:(void(^)(NSError*))errorBlock;
+ @warning Calling startTask will not have any effect on this.
+ */
+- (long)timeElapsedSinceTaskStart;
 
 /**
  @brief Logs the current log information available.

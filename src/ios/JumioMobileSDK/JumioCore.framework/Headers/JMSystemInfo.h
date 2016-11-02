@@ -10,8 +10,8 @@
 
 @interface JMSystemInfo : NSObject
 
-+ (NSString*)systemVersionString;
-+ (float)systemVersionNumber;
++ (float)systemVersion;
++ (BOOL)isSystemVersionAtLeastOS8;
 + (BOOL)isSystemVersionAtLeastOS9;
 
 @end

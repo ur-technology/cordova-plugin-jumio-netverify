@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetverifyViewController.h"
 
-@interface NetverifyInfoBarLabel : UILabel
+@interface NetverifyInfoBarLabel : UILabel <NetverifyAppearance>
 
 @property (nonatomic, strong) UIColor *titleColor UI_APPEARANCE_SELECTOR;
 

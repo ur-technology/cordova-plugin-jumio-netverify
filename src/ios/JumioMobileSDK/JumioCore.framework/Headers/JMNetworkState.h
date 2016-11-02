@@ -28,11 +28,11 @@
 - (void)didFailTask;
 
 - (void)cancel;
-- (void)reset;
 
 - (void) initStateMachine;
 
 - (NSString *) baseURL;
+- (NSString *) fallbackURL;
 - (NSString *) merchantApiToken;
 - (NSString *) merchantApiSecret;
 

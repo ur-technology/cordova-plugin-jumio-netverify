@@ -11,5 +11,8 @@
 @interface JMAppearance : NSObject
 
 + (void) setGeneralAppearanceForClass:(id)containingClass;
++ (UIColor *)submitButtonBackgroundColorForState:(UIControlState)state;
++ (UIColor *)submitButtonTitleColorForState:(UIControlState)state;
++ (UIColor *)cancelButtonBackgroundColorForState:(UIControlState)state;
 
 @end

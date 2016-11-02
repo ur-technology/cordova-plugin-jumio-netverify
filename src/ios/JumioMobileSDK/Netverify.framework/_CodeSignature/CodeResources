@@ -4,37 +4,41 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Assets.car</key>
-		<data>
-		cbg9dfE2LXzNAQS2WwW4dHwDAGg=
-		</data>
 		<key>Headers/ISOCountryConverter.h</key>
 		<data>
 		cfZsc2Lj0oTtjyOOkUnJcINldeA=
 		</data>
-		<key>Headers/MultiDocumentViewController.h</key>
+		<key>Headers/JMNavigationController.h</key>
 		<data>
-		wjzQrakv8ir77yptU4mr8AcDZLE=
+		lxU7XKZ7J47lmd5BIIHNXRdb49U=
 		</data>
 		<key>Headers/Netverify-Prefix.pch</key>
 		<data>
-		4AFkiXHyMKcbeoiruhBMSMVSNi8=
+		5tU86H+uhwkZjKCU6M+p0oeh2NQ=
 		</data>
 		<key>Headers/Netverify.h</key>
 		<data>
-		IFJYr6DuyRkXbcCuLTCCg+pNsgg=
+		IkWsA7kKoqdTxPK4izVQM50i1zE=
 		</data>
-		<key>Headers/NetverifyBaseView.h</key>
+		<key>Headers/NetverifyBackgroundImageView.h</key>
 		<data>
-		LtOC0uTRuhYWP0FPuJxuFsKORJc=
+		SN7GtkJQXjvOkpVKNMbI+sF/law=
 		</data>
 		<key>Headers/NetverifyDocumentData.h</key>
 		<data>
-		HVqucbBV2T6XXgT9ddwJDNhy8d4=
+		Yu0OaF4mQzwYIZiknR1Ifky8BqQ=
 		</data>
 		<key>Headers/NetverifyFallbackButton.h</key>
 		<data>
-		xpT+o+ZSJ8EW9ZGCOtaxC6gTihA=
+		iLa72eGMWtXAOZK4Pq6jT6BJQ8Y=
+		</data>
+		<key>Headers/NetverifyHelpButton.h</key>
+		<data>
+		qOewxLo0FfyZExd6C8eGlr5CefE=
+		</data>
+		<key>Headers/NetverifyInfoBarLabel.h</key>
+		<data>
+		9D6Ad/7AGWcW3WIotavFxT2OTA8=
 		</data>
 		<key>Headers/NetverifyMrzData.h</key>
 		<data>
@@ -46,19 +50,27 @@
 		</data>
 		<key>Headers/NetverifyNegativeButton.h</key>
 		<data>
-		r5oeYVt1srrhYpT21sHpyG2d/VA=
+		6Pzm8c4kUDbGkASwADdJyRk7Byw=
 		</data>
 		<key>Headers/NetverifyPositiveButton.h</key>
 		<data>
-		Y69x+MLe9R8sAORFzCyR+aQXDK4=
+		h4MXdTl0e+I4NWSU6cnN9gNEYKo=
 		</data>
-		<key>Headers/NetverifyScanOptionButton.h</key>
+		<key>Headers/NetverifyScanOverlay.h</key>
 		<data>
-		Yj1+bjBiu0KfFjcJAVY8lw9BlNE=
+		FswZQf/Nm32bF8K0NuOWRAJxkL0=
+		</data>
+		<key>Headers/NetverifySubmissionProgressBar.h</key>
+		<data>
+		Yln0L962aw72CCHFoG7oBTsYNN4=
+		</data>
+		<key>Headers/NetverifySubmissionTextView.h</key>
+		<data>
+		1rsR4TbzPDyHLgA8UK/omPXp2pU=
 		</data>
 		<key>Headers/NetverifyViewController.h</key>
 		<data>
-		knJGXtBkhcsKlSuClYYA0hmwvsM=
+		ETiqvhJox+sj0WrkWJTCFKf8whs=
 		</data>
 		<key>Headers/UINavigationBar+NetverifyAppearance.h</key>
 		<data>
@@ -66,90 +78,54 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Wgpgjctxwj6B+JDc1od1PG8ZYaA=
+		vqc0/hrv/ktJOs3TcgzUb5Bx2Uo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		cB4N055FATLlwdumAtA4Y6ehjWk=
+		3DNG9/nT4G/10szXltXzdgUnhp4=
 		</data>
-		<key>card_detector/card_detection_engine-by_jumio.json</key>
+		<key>embedded.mobileprovision</key>
 		<data>
-		KjNBvZeeqFYtaNmjjrDpQ3hMAYY=
-		</data>
-		<key>card_detector/card_detection_engine.xml</key>
-		<data>
-		TFXijHJJgqT1E2vkWi07BEjdeIU=
-		</data>
-		<key>card_detector/fast_findcard_config.xml</key>
-		<data>
-		XcQTkBtjJfx5Spxf6RtZZiSfTlc=
-		</data>
-		<key>mrz_mobile/dictionaries/name.dict</key>
-		<data>
-		++geTWvCmqWn0QDdC2eFWxYpDfU=
-		</data>
-		<key>mrz_mobile/dictionaries/sc_an_rules.txt</key>
-		<data>
-		ufCPIdzn5tX0qB3SsmK7RaCx5R4=
-		</data>
-		<key>mrz_mobile/dictionaries/six_digits.pb</key>
-		<data>
-		TrNCDwdadDYORKnnSXq4nYo4/nc=
-		</data>
-		<key>mrz_mobile/dictionaries/surname.dict</key>
-		<data>
-		u/p3voThsqttBmv3ttFz7dkupfY=
-		</data>
-		<key>mrz_mobile/mrzapi_engine.xml</key>
-		<data>
-		tO8Dg8Sz7dWsvitdYpt7RrD14b0=
-		</data>
-		<key>mrz_mobile/mrzcontexts/field_syntax_restrictions.xml</key>
-		<data>
-		7fbumxF7kkpYMhCSpc9w9LXsrlA=
-		</data>
-		<key>mrz_mobile/mrzhighlight/highlight-ini.pb</key>
-		<data>
-		+YbGHXE3vg77AA7zxGha1pv9wMc=
-		</data>
-		<key>mrz_mobile/mrzocr/network_6_packed.pb</key>
-		<data>
-		7CDKTKJD3eNCRxum0aAuFMBu89M=
+		LAe2XUJnRlWHcVNElmx+NknWhKU=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Assets.car</key>
-		<data>
-		cbg9dfE2LXzNAQS2WwW4dHwDAGg=
-		</data>
 		<key>Headers/ISOCountryConverter.h</key>
 		<data>
 		cfZsc2Lj0oTtjyOOkUnJcINldeA=
 		</data>
-		<key>Headers/MultiDocumentViewController.h</key>
+		<key>Headers/JMNavigationController.h</key>
 		<data>
-		wjzQrakv8ir77yptU4mr8AcDZLE=
+		lxU7XKZ7J47lmd5BIIHNXRdb49U=
 		</data>
 		<key>Headers/Netverify-Prefix.pch</key>
 		<data>
-		4AFkiXHyMKcbeoiruhBMSMVSNi8=
+		5tU86H+uhwkZjKCU6M+p0oeh2NQ=
 		</data>
 		<key>Headers/Netverify.h</key>
 		<data>
-		IFJYr6DuyRkXbcCuLTCCg+pNsgg=
+		IkWsA7kKoqdTxPK4izVQM50i1zE=
 		</data>
-		<key>Headers/NetverifyBaseView.h</key>
+		<key>Headers/NetverifyBackgroundImageView.h</key>
 		<data>
-		LtOC0uTRuhYWP0FPuJxuFsKORJc=
+		SN7GtkJQXjvOkpVKNMbI+sF/law=
 		</data>
 		<key>Headers/NetverifyDocumentData.h</key>
 		<data>
-		HVqucbBV2T6XXgT9ddwJDNhy8d4=
+		Yu0OaF4mQzwYIZiknR1Ifky8BqQ=
 		</data>
 		<key>Headers/NetverifyFallbackButton.h</key>
 		<data>
-		xpT+o+ZSJ8EW9ZGCOtaxC6gTihA=
+		iLa72eGMWtXAOZK4Pq6jT6BJQ8Y=
+		</data>
+		<key>Headers/NetverifyHelpButton.h</key>
+		<data>
+		qOewxLo0FfyZExd6C8eGlr5CefE=
+		</data>
+		<key>Headers/NetverifyInfoBarLabel.h</key>
+		<data>
+		9D6Ad/7AGWcW3WIotavFxT2OTA8=
 		</data>
 		<key>Headers/NetverifyMrzData.h</key>
 		<data>
@@ -161,19 +137,27 @@
 		</data>
 		<key>Headers/NetverifyNegativeButton.h</key>
 		<data>
-		r5oeYVt1srrhYpT21sHpyG2d/VA=
+		6Pzm8c4kUDbGkASwADdJyRk7Byw=
 		</data>
 		<key>Headers/NetverifyPositiveButton.h</key>
 		<data>
-		Y69x+MLe9R8sAORFzCyR+aQXDK4=
+		h4MXdTl0e+I4NWSU6cnN9gNEYKo=
 		</data>
-		<key>Headers/NetverifyScanOptionButton.h</key>
+		<key>Headers/NetverifyScanOverlay.h</key>
 		<data>
-		Yj1+bjBiu0KfFjcJAVY8lw9BlNE=
+		FswZQf/Nm32bF8K0NuOWRAJxkL0=
+		</data>
+		<key>Headers/NetverifySubmissionProgressBar.h</key>
+		<data>
+		Yln0L962aw72CCHFoG7oBTsYNN4=
+		</data>
+		<key>Headers/NetverifySubmissionTextView.h</key>
+		<data>
+		1rsR4TbzPDyHLgA8UK/omPXp2pU=
 		</data>
 		<key>Headers/NetverifyViewController.h</key>
 		<data>
-		knJGXtBkhcsKlSuClYYA0hmwvsM=
+		ETiqvhJox+sj0WrkWJTCFKf8whs=
 		</data>
 		<key>Headers/UINavigationBar+NetverifyAppearance.h</key>
 		<data>
@@ -181,51 +165,11 @@
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		cB4N055FATLlwdumAtA4Y6ehjWk=
+		3DNG9/nT4G/10szXltXzdgUnhp4=
 		</data>
-		<key>card_detector/card_detection_engine-by_jumio.json</key>
+		<key>embedded.mobileprovision</key>
 		<data>
-		KjNBvZeeqFYtaNmjjrDpQ3hMAYY=
-		</data>
-		<key>card_detector/card_detection_engine.xml</key>
-		<data>
-		TFXijHJJgqT1E2vkWi07BEjdeIU=
-		</data>
-		<key>card_detector/fast_findcard_config.xml</key>
-		<data>
-		XcQTkBtjJfx5Spxf6RtZZiSfTlc=
-		</data>
-		<key>mrz_mobile/dictionaries/name.dict</key>
-		<data>
-		++geTWvCmqWn0QDdC2eFWxYpDfU=
-		</data>
-		<key>mrz_mobile/dictionaries/sc_an_rules.txt</key>
-		<data>
-		ufCPIdzn5tX0qB3SsmK7RaCx5R4=
-		</data>
-		<key>mrz_mobile/dictionaries/six_digits.pb</key>
-		<data>
-		TrNCDwdadDYORKnnSXq4nYo4/nc=
-		</data>
-		<key>mrz_mobile/dictionaries/surname.dict</key>
-		<data>
-		u/p3voThsqttBmv3ttFz7dkupfY=
-		</data>
-		<key>mrz_mobile/mrzapi_engine.xml</key>
-		<data>
-		tO8Dg8Sz7dWsvitdYpt7RrD14b0=
-		</data>
-		<key>mrz_mobile/mrzcontexts/field_syntax_restrictions.xml</key>
-		<data>
-		7fbumxF7kkpYMhCSpc9w9LXsrlA=
-		</data>
-		<key>mrz_mobile/mrzhighlight/highlight-ini.pb</key>
-		<data>
-		+YbGHXE3vg77AA7zxGha1pv9wMc=
-		</data>
-		<key>mrz_mobile/mrzocr/network_6_packed.pb</key>
-		<data>
-		7CDKTKJD3eNCRxum0aAuFMBu89M=
+		LAe2XUJnRlWHcVNElmx+NknWhKU=
 		</data>
 	</dict>
 	<key>rules</key>

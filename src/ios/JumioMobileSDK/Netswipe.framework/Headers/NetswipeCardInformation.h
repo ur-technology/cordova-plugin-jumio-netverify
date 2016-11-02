@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    NetswipeCreditCardTypeAll               = 0,
+    NetswipeCreditCardTypeAll               = 0,        // All types except PrivateLabel and Startbucks
     NetswipeCreditCardTypeVisa              = 1 << 0,
     NetswipeCreditCardTypeMasterCard        = 1 << 1,
     NetswipeCreditCardTypeAmericanExpress   = 1 << 2,
@@ -17,7 +17,8 @@ typedef enum {
     NetswipeCreditCardTypeDiscover          = 1 << 4,
     NetswipeCreditCardTypeJCB               = 1 << 5,
     NetswipeCreditCardTypeChinaUnionPay     = 1 << 6,
-    NetswipeCreditCardTypeStarbucks         = 1 << 7
+    NetswipeCreditCardTypePrivateLabel      = 1 << 7,   // Does not work in combination with Starbucks
+    NetswipeCreditCardTypeStarbucks         = 1 << 8,   // Does not work in combination with PrivateLabel
 } NetswipeCreditCardType;
 
 typedef NSUInteger NetswipeCreditCardTypes;
@@ -29,7 +30,7 @@ typedef NSUInteger NetswipeUserInterfaceOrientations;
  */
 @interface NetswipeCardInformation : NSObject {}
 
-@property (nonatomic, assign) NetswipeCreditCardType cardType;      // The card type
+@property (nonatomic, readonly) NetswipeCreditCardType cardType;      // The card type
 
 @property (nonatomic, strong) NSMutableString *cardNumber;                 // The card number in the format 1234567812345678
 @property (nonatomic, strong) NSMutableString *cardNumberGrouped;          // The card number in grouped style (e.g. 1234 5678 1234 5678)
@@ -45,6 +46,7 @@ typedef NSUInteger NetswipeUserInterfaceOrientations;
 @property (nonatomic, strong) NSMutableString *cardAccountNumber;          // The UK account number
 @property (nonatomic, strong) NSMutableString *cardSortCode;               // The UK sort code
 
+@property (nonatomic, assign) BOOL cardNumberManuallyEntered;
 @property (nonatomic, assign) BOOL cardSortCodeValid;                      // The card sort code is valid
 @property (nonatomic, assign) BOOL cardAccountNumberValid;                 // The card account number is valid
 

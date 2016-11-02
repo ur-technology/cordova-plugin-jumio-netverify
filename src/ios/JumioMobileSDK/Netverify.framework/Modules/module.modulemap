@@ -28,6 +28,11 @@ module Netverify.NetverifyViewController {
     export *
 }
 
+module Netverify.JMNavigationController {
+    header "JMNavigationController.h"
+    export *
+}
+
 module Netverify.NetverifyDocumentData {
     header "NetverifyDocumentData.h"
     export *
@@ -38,13 +43,28 @@ module Netverify.NetverifyMrzData {
     export *
 }
 
-module Netverify.NetverifyBaseView {
-    header "NetverifyBaseView.h"
+module Netverify.NetverifyBackgroundImageView {
+    header "NetverifyBackgroundImageView.h"
+    export *
+}
+
+module Netverify.NetverifyHelpButton {
+    header "NetverifyHelpButton.h"
+    export *
+}
+
+module Netverify.NetverifyInfoBarLabel {
+    header "NetverifyInfoBarLabel.h"
     export *
 }
 
 module Netverify.NetverifyNavigationBarTitleImageView {
     header "NetverifyNavigationBarTitleImageView.h"
+    export *
+}
+
+module Netverify.NetverifySubmissionTextView {
+    header "NetverifySubmissionTextView.h"
     export *
 }
 
@@ -58,13 +78,13 @@ module Netverify.NetverifyNegativeButton {
     export *
 }
 
-module Netverify.NetverifyFallbackButton {
-    header "NetverifyFallbackButton.h"
+module Netverify.NetverifyScanOverlay {
+    header "NetverifyScanOverlay.h"
     export *
 }
 
-module Netverify.NetverifyScanOptionButton {
-    header "NetverifyScanOptionButton.h"
+module Netverify.NetverifySubmissionProgressBar {
+    header "NetverifySubmissionProgressBar.h"
     export *
 }
 
@@ -75,10 +95,5 @@ module Netverify.UINavigationBarNetverifyAppearance {
 
 module Netverify.ISOCountryConverter {
     header "ISOCountryConverter.h"
-    export *
-}
-
-module Netverify.MultiDocumentViewController {
-    header "MultiDocumentViewController.h"
     export *
 }

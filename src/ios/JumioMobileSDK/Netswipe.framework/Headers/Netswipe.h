@@ -11,6 +11,4 @@
 #import <Netswipe/NetswipeNavigationBarTitleImageView.h>
 #import <Netswipe/NetswipeNegativeButton.h>
 #import <Netswipe/NetswipePositiveButton.h>
-#import <Netswipe/NetswipeBaseView.h>
-#import <Netswipe/NetswipeScanOverlay.h>
 #import <Netswipe/UINavigationBar+NetswipeAppearance.h>

@@ -15,6 +15,15 @@
 @protocol NetswipeCustomScanOverlayViewControllerDelegate <NSObject>
 
 @required
+/**
+ * This method is called when a card is detected and extraction starts running
+ **/
+- (void)netswipeExtractionStarted;
+
+/**
+ * This method is called when extraction has finished
+ **/
+- (void)netswipeExtractionFinished;
 
 /**
  * This method is called when an error occured while the ScanViewController is opend

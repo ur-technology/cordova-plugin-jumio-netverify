@@ -21,26 +21,12 @@
 @protocol CameraProcessingDelegate <NSObject>
 - (void) captureSessionManagerDidOutputSampleBuffer: (CMSampleBufferRef) sampleBuffer;
 - (void) captureSessionManagerDidFinishProcessingImageFrame: (uint8_t*) processedImageFrame size: (CGSize) size;
+- (void) captureSessionManagerFlashNeeded:(BOOL)flashNeeded;
 
 @optional
-- (void) captureSessionManagerFlashNeeded:(BOOL)flashNeeded;
 - (void) captureSessionManagerDidOutputmetaData:(NSArray *)metadataObjects;
 
 @end
-
-@interface JMCaptureSessionManagerConfiguration : NSObject
-
-@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation;
-@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition;
-@property (nonatomic, assign) int allowedCaptureDevicePositions;
-@property (nonatomic, assign) BOOL applyOrientationToPreview;
-@property (nonatomic, assign) id<CameraProcessingDataSource> cameraProcessingDataSource;
-@property (nonatomic, assign) id<CameraProcessingDelegate> cameraProcessingDelegate;
-@property (nonatomic, assign) BOOL requiresFaceMetaData; //default: NO
-@property (nonatomic, assign) BOOL requiresBarcodeMetaData; //default: NO
-
-@end
-
 
 /**
  @class JMCaptureSessionManager
@@ -53,6 +39,8 @@
     int recordingFrameRate;         /**< integer value for recording frame rate calculated in dependency of encoding frame rate */
     uint8_t* croppedRGBFrameBuffer;
 }
+@property (nonatomic, assign) id<CameraProcessingDataSource> cameraProcessingDataSource;
+@property (nonatomic, assign) id<CameraProcessingDelegate> cameraProcessingDelegate;
 
 @property (atomic, strong) NSMutableData* croppedRGBFrameBufferData;
 @property (weak, nonatomic, readonly) UIImage *imageToBlur;
@@ -67,6 +55,8 @@
 
 @property (nonatomic, readonly) CGSize imageFrameSizeForCurrentConfiguration; // Returns raw image size of sample buffer for the current capture session configuration
 @property (nonatomic, readonly) CGRect croppingRectForCurrentConfiguration; // Returns the cropping rect applied to the raw buffer for the current capture session configuration
+
+@property (nonatomic, assign) BOOL shouldRegisterForMetaDataOutput; // initially NO; Marks if metaDataOutput should be handled
 
 // camera related
 @property (nonatomic, readonly, getter = areTwoCamerasAvailable) BOOL twoCamerasAvailable;
@@ -84,26 +74,16 @@
 @property (nonatomic, assign) CGFloat cropFactorWidth;
 @property (nonatomic, assign) CGFloat cropRectOffsetFactorY;
 
-- (id) initWithConfiguration:(JMCaptureSessionManagerConfiguration *) configuration;
-- (void) updateConfiguration:(JMCaptureSessionManagerConfiguration *) configuration;
-- (void) detachDelegateAndDataSource;
-- (void) removeCaptureInputs;
-- (void) removeCaptureOutputs;
-- (void) updateSessionPreset;
+- (id) initWithVideoOrientation: (AVCaptureVideoOrientation) videoOrientation cameraProcessingDelegate:(id<CameraProcessingDelegate>)processingDelegate dataSource: (id<CameraProcessingDataSource>) dataSource useBackCameraAsDefault:(BOOL)useBackCameraAsDefault applyOrientationToPreview:(BOOL)applyOrientationToPreview shouldRegisterForMetaDataOutput:(BOOL)registerForMetaDataOutput;
 
 - (void) restartCapturing;
 - (void) startCapturing;
 - (void) stopCapturing;
-
-// IPHONE-4616 BAM: Pause for Customer Overlay is not working
-// Exclusively for BAM credit card scanning, as the custom scan view has a start and stop scan functionality
-- (void) startCapturingAndPreview;
-- (void) stopCapturingAndPreview;
-
-- (void) setRequiresFaceMetaDataWithCaptureDevicePosition:(AVCaptureDevicePosition)devicePosition minFrameCount:(int)minFrames maxFrameCount:(int)maxFrames;
+- (void) resetCameraConfiguration;
+- (void) resetUseBackCameraAsDefault:(BOOL)useBackAsDefault;
+- (void) setVideoInputWithCaptureDevicePosition:(AVCaptureDevicePosition)devicePosition minFrameCount:(int)minFrames maxFrameCount:(int)maxFrames;
 - (void) enableVideoDataOutput;
 - (void) disableVideoDataOutput;
-- (void) addDefaultVideoInput;
 
 - (void) setVideoOrientation: (AVCaptureVideoOrientation) videoOrientation includingPreviewLayer: (BOOL) considerPreviewLayer;
 - (CGSize) imageFrameSizeForCurrentCaptureSessionPresetWithVideoOrientation: (AVCaptureVideoOrientation) videoOrientation; // Returns raw image size of sample buffer for the current capture session configuration and configurable video orientation
@@ -136,7 +116,7 @@
 - (BOOL) convertRawBGRABuffer:(uint8_t *)srcBuffer bufferSize:(CGSize)size inRect:(CGRect)rect toMutableDataObject: (NSMutableData*) dstData;
 
 - (void) setCropRectOffsetFactorYWithAbsolutePixels:(CGFloat)cropRectOffsetYPixels;
-- (void) setCropRectOffsetFactorYFromAbsolutePixels:(CGFloat)cropRectOffsetYPixels;
+
 
 /**
  * @brief Calculates the focus confidence from the current sample buffer.

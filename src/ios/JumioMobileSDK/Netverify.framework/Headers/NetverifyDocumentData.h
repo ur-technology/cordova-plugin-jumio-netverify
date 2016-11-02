@@ -75,4 +75,6 @@ typedef enum {
 @property (nonatomic, assign) BOOL nameMatch;                             // Result of name comparison based on the Levenshtein distance algorithm if property name was set (default: NO)
 @property (nonatomic, assign) NSInteger nameDistance;                     // The Levenshtein distance of the extracted name and the property name (default: -1).
 
+@property (nonatomic, assign) BOOL livenessDetected;                     // returns YES when NVFaceScanViewController detected live person.
+
 @end

@@ -21,6 +21,4 @@
 
 #define kJMImageQualityThresholdROI     0.12
 
-#define kJMBaseInfoViewDefaultPortraitHeight 51.0f
-
 #endif

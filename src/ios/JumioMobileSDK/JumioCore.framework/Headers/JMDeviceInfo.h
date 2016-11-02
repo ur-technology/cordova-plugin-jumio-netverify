@@ -28,7 +28,6 @@ typedef enum
     IPHONE_6,
     IPHONE_6S,
     IPHONE_6S_PLUS,
-    IPHONE_SE,
     
     IPOD_TOUCH_1G,
     IPOD_TOUCH_2G,
@@ -51,10 +50,7 @@ typedef enum
     IPAD_AIR,
     IPAD_AIR_2_WIFI,
     IPAD_AIR_2,
-    IPAD_PRO_12_9_WIFI,
-    IPAD_PRO_12_9,
-    IPAD_PRO_9_7_WIFI,
-    IPAD_PRO_9_7,
+    IPAD_PRO,
     
     IPAD_MINI,
     IPAD_MINI_WIFI,
@@ -78,9 +74,5 @@ typedef enum
 + (NSString*)deviceModelDescription;
 
 + (unsigned int)cpuCores;
-
-+ (UIInterfaceOrientation)deviceInterfaceOrientation;
-+ (UIDeviceOrientation)deviceOrientation;
-
 
 @end

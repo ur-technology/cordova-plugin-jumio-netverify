@@ -10,7 +10,6 @@
 
 
 extern NSString * const kExtScanDebuggingRequestTimingTask;
-extern NSString * const kExtScanDebuggingRequestTimingHTTPBody;
 extern NSString * const kExtScanDebuggingRequestTimingResponseData;
 extern NSString * const kExtScanDebuggingRequestTimingHTTPStatusCode;
 extern NSString * const kExtScanDebuggingRequestTimingTimeRequired;
@@ -30,7 +29,6 @@ extern const NSUInteger kExtScanDebuggingMaxServerTaskDataLengthAllowed;
 @property (nonatomic, assign) BOOL netswipeExtendedScanDebugging;
 @property (nonatomic, assign) BOOL netverifyExtendedScanDebugging;
 @property (nonatomic, assign) BOOL netverifyLiveScanDebugging;
-@property (nonatomic, assign) BOOL multiDocumentExtendedScanDebugging;
 
 @property (nonatomic, assign, readonly) BOOL                    isScanStarted;
 @property (nonatomic, strong)           NSString*               scanReference;
@@ -39,16 +37,12 @@ extern const NSUInteger kExtScanDebuggingMaxServerTaskDataLengthAllowed;
 @property (nonatomic, strong, readonly) NSString*               scanLogFilePath;
 @property (nonatomic, strong, readonly) NSString*               scanLogDirPath;
 @property (nonatomic, strong, readonly) NSString*               requestTimingLogFilePath;
-
-@property (nonatomic, strong)                           NSString*   logFile;
-@property (nonatomic, strong)                           NSString* 	requestTimingsLogFile;
-@property (nonatomic, strong)                           NSString*   logRootDirectory;
-@property (nonatomic, assign, getter=isLogFinalized)    BOOL        logFinalized;
+@property (nonatomic, strong) NSDictionary* netswipeEndpoint;
+@property (nonatomic, strong) NSDictionary* netverifyEndpoint;
 
 
 + (JMExtendedScanDebugging*) sharedInstance;
 
 - (void)writeString:(NSString*)string toFileAtPath:(NSString*)filePath;
-- (void)appendLineToLogString:(NSMutableString*)logString key:(NSString*)aKey value:(NSString*)aValue separator:(NSString*)aSeparator;
 
 @end

@@ -14,6 +14,6 @@
 + (UIFont*)regularFontWithSize:(float)size;
 + (UIFont*)mediumFontWithSize:(float)size;
 + (UIFont*)boldFontWithSize:(float)size;
-+ (UIFont*)italicFontWithSize:(float)size;
++ (UIFont*)boldObliqueFontWithSize:(float)sizel;
 
 @end

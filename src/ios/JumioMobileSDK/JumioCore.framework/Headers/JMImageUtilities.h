@@ -18,5 +18,4 @@
 
 + (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius toImage:(UIImage*)image;
 + (UIImage *)imageWithColor:(UIColor *)color;
-+ (UIImage *)imageWithColor:(UIColor *)color withSize:(CGSize)size;
 @end

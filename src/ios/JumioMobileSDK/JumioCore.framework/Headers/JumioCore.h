@@ -20,17 +20,22 @@ FOUNDATION_EXPORT const unsigned char JumioCoreVersionString[];
 #import <JumioCore/JMAlertView.h>
 #import <JumioCore/JMAlertViewController.h>
 #import <JumioCore/JMAppearance.h>
+#import <JumioCore/JMBaseCollapsableView.h>
 #import <JumioCore/JMBaseServerTask+Utilities.h>
 #import <JumioCore/JMBaseServerTask.h>
 #import <JumioCore/JMNetworkStateConstants.h>
 #import <JumioCore/JMNetworkStateMachine.h>
 #import <JumioCore/JMRoi.h>
+#import <JumioCore/JMBaseInfoView.h>
 #import <JumioCore/JMBaseTableViewCell.h>
+#import <JumioCore/JMBrandingLogo.h>
 #import <JumioCore/JMCameraFocusIndicatorView.h>
 #import <JumioCore/JMCaptureSessionManager.h>
+#import <JumioCore/JMCertificateBundle.h>
 #import <JumioCore/JMExtendedScanDebugging.h>
 #import <JumioCore/JMImageBundle.h>
 #import <JumioCore/JMLogging.h>
+#import <JumioCore/JMManualEntryButton.h>
 #import <JumioCore/JMResourceLoader.h>
 #import <JumioCore/JMRoiOverlay.h>
 #import <JumioCore/JMRoiSettings.h>
@@ -44,10 +49,6 @@ FOUNDATION_EXPORT const unsigned char JumioCoreVersionString[];
 #import <JumioCore/NSData+Base64.h>
 #import <JumioCore/JMSDK.h>
 #import <JumioCore/JMLoadingTableViewCell.h>
-#import <JumioCore/JMNavigationBarItem.h>
-#import <JumioCore/JMDeviceOrientationChangeNotifier.h>
-#import <JumioCore/JMEndpoint.h>
-#import <JumioCore/JMNavigationController.h>
 
 //Utilities
 #import <JumioCore/JMUtilities.h>

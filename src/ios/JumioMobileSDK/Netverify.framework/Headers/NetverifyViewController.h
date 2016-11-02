@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Netverify/JMNavigationController.h>
 #import <Netverify/NetverifyDocumentData.h>
 #import <JumioCore/JMSDK.h>
-#import <JumioCore/JMNavigationController.h>
 
 @class NetverifyViewController;
 
@@ -21,7 +21,7 @@
 
 @protocol NetverifyViewControllerDelegate <NSObject>
 @optional
-- (void) netverifyViewController: (NetverifyViewController*) netverifyViewController didFinishInitializingWithError:(NSError*)error;
+- (void) netverifyViewControllerDidFinishInitializing: (NetverifyViewController*) netverifyViewController;
 
 @required
 - (void) netverifyViewController: (NetverifyViewController*) netverifyViewController didFinishWithDocumentData:(NetverifyDocumentData *)documentData scanReference: (NSString*) scanReference;
@@ -55,19 +55,17 @@
 
 @property (nonatomic, strong) NSString* name;                           // Optional name which the extracted name gets comared with. The value of name must be of format <firstname> <lastname>.
 
+@property (nonatomic, assign) BOOL showFlagOnInfoBar;                   // Control the visibility of the flag image on the infobar (default: YES)
+
 @property (nonatomic, assign) JumioCameraPosition cameraPosition;       // Set the default camera position
 
 @property (nonatomic, strong) NSString *callbackUrl;                    // Callback URL (max. 255 characters) for the confirmation after the verification is completed.
                                                                         // This setting overrides your Jumio merchant settings.
 
-@property (nonatomic, strong) NSString *additionalInformation;          // Optional field (max. 100 characters) for filters in Merchantreports
-
 @property (nonatomic, assign) BOOL dataExtractionOnMobileOnly;          // Use the following method to only support IDs where data can be extracted on mobile only
 
 @property (nonatomic, assign) BOOL sendDebugInfoToJumio;                // Use the following method to explicitly send debug-info to Jumio. (default: NO)
                                                                         // Only set this property to YES if you are asked by our Jumio support personal.
-
-@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;              // Configure the status bar style for the duration NetverifyViewController is presented
 
 @end
 
