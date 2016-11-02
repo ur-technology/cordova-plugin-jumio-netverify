@@ -1,0 +1,106 @@
+/*
+  Localizable-Netverify.strings
+  NetswipeMobileSDK
+
+  Created by Philipp Rakuschan on 17/07/2013.
+  Copyright (c) 2013 Jumio Inc. All rights reserved.
+*/
+
+// ScanOptions View Controller
+"netverify.scan-options.navigationItem.title"="Select your document";
+
+// ScanOptions Header Title
+"netverify.scan-options.header.title"="Select the type of document you wish to scan";
+
+// ScanOptions Sections
+"netverify.scan-options.section-header.country.title"="YOUR COUNTRY";
+"netverify.scan-options.section-header.document-type.title"="TYPE OF DOCUMENT";
+"netverify.scan-options.section-header.document-variant.title"="LAYOUT OF DOCUMENT";
+
+// ScanOptions Country Cell
+"netverify.scan-options.cell.country.unselected.title"="Select a country";
+
+// ScanOptions Cell Preselection
+"netverify.scan-options.cell.preselected.subtitle"="Cannot be changed";
+
+// ScanOptions Document Type Cells
+"netverify.scan-options.cell.document-type.passport.title"="Passport";
+"netverify.scan-options.cell.document-type.visa.title"="Visa";
+"netverify.scan-options.cell.document-type.identity-card.title"="Identity Card";
+"netverify.scan-options.cell.document-type.driver-license.title"="Driver License";
+
+// ScanOptions Document Variant Cells
+"netverify.scan-options.cell.document-variant.paper.title"="Folded document";
+"netverify.scan-options.cell.document-variant.plastic.title"="Plastic photocard";
+
+// Country selection view
+"netverify.country-selection.navigationItem.title" = "Select your country";
+
+// Scan View
+"netverify.scan-view.navigationItem.title" = "Scan document";
+"netverify.scan-view.navigation-item.position-face.title" = "Take a Selfie";
+"netverify.scan-view.use-front-card.overlay.title" = "USE FRONT";
+"netverify.scan-view.use-back-card.overlay.title" = "USE BACK";
+"netverify.scan-view.passport.overlay.title" = "PASSPORT";
+"netverify.scan-view.visa.overlay.title" = "VISA";
+
+"netverify.scan-view.label.info-description" = "Move your eyes or blink";
+
+// Help view
+"netverify.upload-and-verify.Passport.title" = "Passport";
+"netverify.upload-and-verify.Visa.title" = "Visa";
+"netverify.upload-and-verify.IdentityCard.title" = "Identity card";
+"netverify.upload-and-verify.DriverLicense.title" = "Driver license";
+
+"netverify.upload-and-verify.document-front.title" = "Front";
+"netverify.upload-and-verify.document-back.title" = "Back";
+"netverify.upload-and-verify.document-inside.title" = "Inside";
+"netverify.upload-and-verify.document-outside.title" = "Outside";
+
+// Error cases
+"netverify.error.network-problem.title" = "We have encountered a network communication problem";
+"netverify.error.authentication-failed.title" = "Authentication failed";
+"netverify.error.invalid-key.title" = "Certificate not valid anymore. Please contact the app vendor";
+"netverify.error.device-is-offline.title" = "No Internet connection available";
+"netverify.error.cancelled-by-user.title" = "Cancelled by end-user";
+"netverify.error.camera-access-disabled.title" = "Camera access disabled";
+"netverify.error.user-address-missing.title" = "Scan front";
+"netverify.error.user-address-missing" = "The barcode of your document didn´t contain your address, turn your document and scan the front.";
+
+// Submission view
+"netverify.submission-view.uploading.headline" = "Uploading your documents";
+"netverify.submission-view.uploading.description" = "This should only take a couple of seconds, depending on your network connectivity";
+"netverify.submission-view.successful.headline" = "Upload successful";
+"netverify.submission-view.successful.description" = "";
+
+// Scan help view
+"netverify.scan-help-view.plastic.title" = "Please point the camera of your device to the front of your document";
+"netverify.scan-help-view.paper.title" = "Please point the camera of your device to the unfolded document and take a photo";
+"netverify.scan-help-view.face.headline" = "Align your Face";
+"netverify.scan-help-view.face.description" = "A picture of your face will now be taken automatically. Center your face within the overlay.\n\nBlink twice to complete the process.";
+"netverify.scan-help-view.face.duration" = "The scanning process takes 5 seconds.";
+"netverify.scan-help-view.steps" = "Step %lu of %lu";
+"netverify.scan-help-view.face.button.continue" = "START";
+"netverify.scan-help-view.button.general-fallback.title" = "CAPTURE IS NOT WORKING";
+"netverify.scan-help-view.button.barcode-fallback.title" = "NO BARCODE ON MY ID";
+
+// Error view
+"netverify.error-view.button.retry.title" = "RETRY";
+"netverify.error-view.button.cancel.title" = "CANCEL";
+"netverify.error-view.error.header.title" = "Error";
+
+// Alert view
+"netverify.alert-view.error.ok.title" = "Confirm";
+
+// Confirmation view
+"netverify.confirmation-view.headline" = "Check readability";
+"netverify.confirmation-view.button.submit" = "READABLE";
+"netverify.confirmation-view.button.retry" = "RETAKE";
+"netverify.confirmation-view.label" = "Make sure that all data on your document is fully visible, glare free and not blurred";
+"netverify.confirmation-view.manual-face.label" = "Make sure your face is fully visible and the image is not blurred";
+
+"netverify.alert-view.driverlicense-barcode-missing.confirm-button.title" = "Tap to continue";
+
+// placeholder gets replaced by the app name
+"netverify.alert.camera-access-disabled.text" = "%@ needs access to your camera. Please check your privacy settings.";
+"netverify.alert.camera-access-disabled.title" = "Camera access disabled";

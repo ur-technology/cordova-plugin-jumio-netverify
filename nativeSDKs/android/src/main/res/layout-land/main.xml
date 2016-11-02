@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:jumio="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+	<Button
+		android:id="@+id/startNetverifyButton"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="Start Netverify" />
+
+    <Button
+        android:id="@+id/startBamButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Start Bam" />
+
+    <Button
+        android:id="@+id/startBamCustomButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Start Bam Custom" />
+
+	<Button
+		android:id="@+id/startMultiDocumentButton"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="Start Multi Document" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/bamCustomContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <Button
+                android:id="@+id/stopBamCustomButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Stop Custom" />
+	        <FrameLayout
+		        android:id="@+id/bamCustomScanViewWrapper"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/stopBamCustomButton">
+	            <com.jumio.bam.custom.BamCustomScanView
+	                android:id="@+id/bamCustomScanView"
+	                jumio:jumio_ratio="1.33"
+	                android:layout_width="wrap_content"
+	                android:layout_height="300dp">
+	            </com.jumio.bam.custom.BamCustomScanView>
+	        </FrameLayout>
+            <ImageView
+                android:id="@+id/switchCameraImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/bamCustomScanViewWrapper"
+                android:layout_alignLeft="@+id/bamCustomScanViewWrapper"
+                android:visibility="gone"
+                android:src="@drawable/jumio_ic_camera_front"/>
+            <ImageView
+                android:id="@+id/toggleFlashImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/bamCustomScanViewWrapper"
+                android:layout_alignRight="@+id/bamCustomScanViewWrapper"
+                android:visibility="gone"
+                android:src="@drawable/jumio_ic_flash_on"/>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
