@@ -13,7 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/directpayintl/cordova-plugin-jumio-netverify"
   },
-  "private": true,
   "keywords": [
     "cordova",
     "plugin",
