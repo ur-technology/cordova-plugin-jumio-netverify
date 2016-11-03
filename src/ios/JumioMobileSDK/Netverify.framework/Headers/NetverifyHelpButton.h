@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetverifyViewController.h"
 
-@interface NetverifyHelpButton : UIButton <NetverifyAppearance>
+@interface NetverifyHelpButton : UIButton
 
 @end

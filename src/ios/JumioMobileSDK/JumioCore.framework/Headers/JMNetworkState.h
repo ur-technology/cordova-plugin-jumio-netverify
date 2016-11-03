@@ -25,6 +25,8 @@
 
 - (void)executeTask;
 
+- (void)didFinishTaskSuccessfully;
+
 - (void)didFailTask;
 
 - (void)cancel;
@@ -32,12 +34,10 @@
 - (void) initStateMachine;
 
 - (NSString *) baseURL;
-- (NSString *) fallbackURL;
 - (NSString *) merchantApiToken;
 - (NSString *) merchantApiSecret;
 
 - (BOOL) isCurrentStatusSuccess;
 - (BOOL) isCurrentStatusError;
-- (BOOL) isExecutable;
 
 @end

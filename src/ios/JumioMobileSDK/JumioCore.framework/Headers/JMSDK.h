@@ -26,15 +26,12 @@ extern NSString * const kJMSDKBundleVersionKey;
 @property (nonatomic, strong) NSBundle * bundle;
 @property (nonatomic, strong, readonly) NSDictionary * plistDictionary;
 
-- (NSDictionary *) mobileDeviceDetails;
 
 - (NSString*)shortVersionString;
 
 - (NSString*)versionString;
 
 - (NSString*)sdkVersionString;
-
-- (NSString*)sdkVersionStringFull;
 
 - (NSString*)bundleValueForKey:(NSString* const)key;
 

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetverifyViewController.h"
 
-@interface NetverifyNavigationBarTitleImageView : UIImageView <NetverifyAppearance>
+@interface NetverifyNavigationBarTitleImageView : UIImageView
 
 @property (nonatomic, strong) UIImage *titleImage UI_APPEARANCE_SELECTOR;
 

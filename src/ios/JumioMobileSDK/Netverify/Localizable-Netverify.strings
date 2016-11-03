@@ -44,7 +44,6 @@
 // Error cases
 "netverify.error.network-problem.title" = "We have encountered a network communication problem";
 "netverify.error.authentication-failed.title" = "Authentication failed";
-"netverify.error.invalid-key.title" = "Certificate not valid anymore. Please contact the app vendor";
 "netverify.error.device-is-offline.title" = "No Internet connection available";
 "netverify.error.ocr-loading-failed.title" = "Scanning not available at this time, please contact the app vendor";
 "netverify.error.cancelled-by-user.title" = "Cancelled by end-user";
@@ -54,7 +53,7 @@
 // Info view
 "netverify.info-bar.select-issuing-country.title" = "Confirm or select the issuing country of the ID you want to verify";
 "netverify.info-bar.validation.title" = "Extraction in progress ...";
-"netverify.info-bar.validation.percent.title" = "Extraction in progress (%u%%)";
+"netverify.info-bar.validation.percent.title" = "Extraction in progress (%u%%) ...";
 "netverify.info-bar.select-id-type.title" = "Select the type of ID you wish to scan";
 "netverify.info-bar.help.button.title" = "Help";
 
@@ -76,10 +75,6 @@
 "netverify.scan-view.info-view.position-face.title" = "Position face close to the overlay for 5 sec to scan";
 
 "netverify.scan-view.label.info-description" = "Move your eyes or blink";
-
-"netverify.scan-view.info-view.position-front-image-scan.title" = "Please scan the front of your document";
-"netverify.scan-view.info-view.position-back-image-scan.title" = "Please scan the back of your document";
-"netverify.scan-view.info-view.position-face-image-scan.title" = "Please take a photo of your face";
 
 // Submission view
 "netverify.submission-view.navigationItem.title" = "Submission";
@@ -113,10 +108,10 @@
 "netverify.alert-view.button.retry.title" = "Retry";
 "netverify.alert-view.button.cancel.title" = "Cancel";
 "netverify.alert-view.error.header.title" = "Error";
-"netverify.alert-view.error.ok.title" = "Confirm";
+"netverify.alert-view.error.ok.title" = "OK";
 
 // Confirmation view
-"netverify.confirmation-view.button.submit" = "Confirm";
+"netverify.confirmation-view.button.submit" = "OK";
 "netverify.confirmation-view.button.retry" = "Retry";
 "netverify.confirmation-view.label" = "Please make sure all data is readable.\nIf not, please retry.";
 

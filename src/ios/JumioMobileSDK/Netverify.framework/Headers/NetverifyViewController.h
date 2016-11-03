@@ -13,11 +13,6 @@
 
 @class NetverifyViewController;
 
-@protocol NetverifyAppearance <NSObject>
-
-+ (instancetype)netverifyAppearance;
-
-@end
 
 @protocol NetverifyViewControllerDelegate <NSObject>
 @optional
@@ -53,6 +48,8 @@
 
 @property (nonatomic, strong) NSString* customerId;                     // Specifies how the user is registered on your system. For example, you can use an email address, user name, or account number. Optional. (Maximum characters: 100)
 
+- (void) setFirstName: (NSString *) firstName lastName: (NSString *) lastName;    // Both are required to provide customers first- and lastname. (Maximum characters for each: 100)
+
 @property (nonatomic, strong) NSString* name;                           // Optional name which the extracted name gets comared with. The value of name must be of format <firstname> <lastname>.
 
 @property (nonatomic, assign) BOOL showFlagOnInfoBar;                   // Control the visibility of the flag image on the infobar (default: YES)
@@ -64,9 +61,6 @@
 
 @property (nonatomic, assign) BOOL dataExtractionOnMobileOnly;          // Use the following method to only support IDs where data can be extracted on mobile only
 
-@property (nonatomic, assign) BOOL sendDebugInfoToJumio;                // Use the following method to explicitly send debug-info to Jumio. (default: NO)
-                                                                        // Only set this property to YES if you are asked by our Jumio support personal.
-
 @end
 
 /**
@@ -76,24 +70,19 @@
 @interface NetverifyViewController : JMNavigationController
 
 /** Create an instance of the Netverify SDK.
- @param configuration The configuration that is used for the current instance
+ @param NetverifyConfigration The configuration that is used for the current instance
  @return An initialized NetverifyViewController instance */
 - (instancetype) initWithConfiguration:(NetverifyConfiguration*)configuration;
 
 
 /** Update the Configuration of the Netverify SDK.
  The configuration can only be updated when the NetverifyViewController is dismissed and not visible.
- @param configuration The configuration that is used for the current instance
+ @param NetverifyConfigration The configuration that is used for the current instance
  @return YES if configuration was updated successfully
  */
 - (BOOL) updateConfiguration:(NetverifyConfiguration *)configuration;
 
 /** Return the Netverify SDK version. */
 - (NSString*) sdkVersion;
-
-/** 
- * Returns a sessionID if sendDebugInfoToJumio is set to YES.
- */
-- (NSUUID*) debugID;
 
 @end

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetswipeViewController.h"
 
-@interface NetswipeNavigationBarTitleImageView : UIImageView <NetswipeAppearance>
+@interface NetswipeNavigationBarTitleImageView : UIImageView
 
 @property (nonatomic, strong) UIImage *titleImage UI_APPEARANCE_SELECTOR;
 

@@ -12,6 +12,5 @@
 + (UILabel*)autolayoutLabel;
 + (UIImageView*)autolayoutImageView;
 + (UIActivityIndicatorView*)autolayoutActivityIndicatorView;
-+ (UIButton*)autolayoutButton;
 
 @end

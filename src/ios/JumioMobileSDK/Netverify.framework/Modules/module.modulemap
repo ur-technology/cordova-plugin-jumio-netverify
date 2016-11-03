@@ -77,23 +77,3 @@ module Netverify.NetverifyNegativeButton {
     header "NetverifyNegativeButton.h"
     export *
 }
-
-module Netverify.NetverifyScanOverlay {
-    header "NetverifyScanOverlay.h"
-    export *
-}
-
-module Netverify.NetverifySubmissionProgressBar {
-    header "NetverifySubmissionProgressBar.h"
-    export *
-}
-
-module Netverify.UINavigationBarNetverifyAppearance {
-    header "UINavigationBar+NetverifyAppearance.h"
-    export *
-}
-
-module Netverify.ISOCountryConverter {
-    header "ISOCountryConverter.h"
-    export *
-}

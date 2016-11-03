@@ -10,6 +10,12 @@
 
 
 @interface JMNetworkStateMachine : JMStateMachine
+@property (nonatomic, strong, readonly) NSURLSession* session;
+
+- (instancetype)initWithSession:(NSURLSession*)session;
+
+- (void)cancelAllStatesWithCompletion:(void (^)())completion;
+
 
 
 @end

@@ -1,0 +1,30 @@
+{
+  "name": "cordova-plugin-android-fingerprint-auth",
+  "version": "1.0.0",
+  "description": "Cordova plugin to use Jumio Sdk",
+  "cordova": {
+    "id": "cordova-plugin-jumio-netverify",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/directpayintl/cordova-plugin-jumio-netverify"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "android",
+    "ios",
+    "jumio",
+    "netverify"
+  ],
+  "author": "DPX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/directpayintl/cordova-plugin-jumio-netverify/issues"
+  },
+  "homepage": "https://github.com/directpayintl/cordova-plugin-jumio-netverify#readme"
+}

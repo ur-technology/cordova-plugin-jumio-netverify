@@ -13,12 +13,6 @@
 
 @class NetswipeViewController;
 
-@protocol NetswipeAppearance <NSObject>
-
-+ (instancetype)netswipeAppearance;
-
-@end
-
 @protocol NetswipeViewControllerDelegate <NSObject>
 
 - (void) netswipeViewController: (NetswipeViewController *) controller didCancelWithError:(NSError *) error;
@@ -31,7 +25,7 @@
 
 /**
  @class NetswipeConfiguration
- @brief Handle configuration of the Netswipe Mobile SDK.
+ @brief Handle configuration of the Netverify Mobile SDK.
  */
 @interface NetswipeConfiguration : NSObject
 
@@ -84,19 +78,19 @@
 
 /**
  @class NetswipeViewController
- @brief Handle setup and presentation of the Netswipe Mobile SDK.
+ @brief Handle setup and presentation of the Netverify Mobile SDK.
  */
 @interface NetswipeViewController : UINavigationController
 
 /** Create an instance of NetswipeViewController.
- @param configuration The configuration that is used for the current instance
+ @param NetswipeConfigration The configuration that is used for the current instance
  @return An initialized NetswipeViewController instance
  */
 - (id) initWithConfiguration:(NetswipeConfiguration *)configuration;
 
-/** Update the Configuration of the Netswipe SDK.
- The configuration can only be updated when the NetswipeViewController is dismissed and not visible.
- @param configuration The configuration that is used for the current instance
+/** Update the Configuration of the Netverify SDK.
+ The configuration can only be updated when the NetverifyViewController is dismissed and not visible.
+ @param NetverifyConfigration The configuration that is used for the current instance
  @return YES if configuration was updated successfully
  */
 - (BOOL) updateConfiguration:(NetswipeConfiguration *)configuration;

@@ -16,6 +16,4 @@
 @property (nonatomic, assign) NSInteger statusCode;
 @property (nonatomic, strong) NSError*  error;
 
-- (void)reset;
-
 @end

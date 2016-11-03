@@ -29,14 +29,6 @@ typedef enum {
     NVDocumentVariantPlastic
 } NVDocumentVariant;
 
-typedef enum {
-    NVExtractionMethodMRZ,
-    NVExtractionMethodOCR,
-    NVExtractionMethodBarcode,
-    NVExtractionMethodBarcodeOCR,
-    NVExtractionMethodNone,
-}NVExtractionMethod;
-
 @interface NetverifyDocumentData : NSObject {
     
 }
@@ -62,12 +54,10 @@ typedef enum {
 @property (nonatomic, strong) NSString *originatingCountry;
 
 //Address
-@property (nonatomic, strong) NSString *addressLine;
+@property (nonatomic, strong) NSString *street;
 @property (nonatomic, strong) NSString *city;
-@property (nonatomic, strong) NSString *subdivision;
-@property (nonatomic, strong) NSString *postCode;
-
-@property (nonatomic, assign) NVExtractionMethod extractionMethod;
+@property (nonatomic, strong) NSString *state;
+@property (nonatomic, strong) NSString *postalCode;
 
 // Raw MRZ data
 @property (nonatomic, strong) NetverifyMrzData *mrzData;

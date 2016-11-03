@@ -121,6 +121,81 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   </segmentation_settings>
 
   <postprocessing_settings>
+    <triadonaries load_time="at_once" path="mrztriadonaries/usa.lastname.dist.trimpb">
+      <fields>NAME0</fields>
+
+      <nations>USA</nations><nations>AUS</nations><nations>AUT</nations>
+      <nations>BEL</nations><nations>GBR</nations><nations>GBD</nations>
+      <nations>GBN</nations><nations>GBO</nations><nations>GBP</nations>
+      <nations>GBS</nations><nations>D</nations><nations>IRL</nations>
+      <nations>LIE</nations><nations>LUX</nations><nations>MCO</nations>
+      <nations>NLD</nations><nations>FRA</nations><nations>CHE</nations>
+      <nations>DNK</nations><nations>ISL</nations><nations>NOR</nations>
+      <nations>FIN</nations><nations>SWE</nations><nations>AND</nations>
+      <nations>VAT</nations><nations>GRC</nations><nations>ESP</nations>
+      <nations>ITA</nations><nations>MLT</nations><nations>PRT</nations>
+      <nations>SMR</nations>
+  
+      <mrzctx_doc_subtypes>inopassport</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>mrv_a</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>mrv_b</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_1</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_2</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_3</mrzctx_doc_subtypes>
+
+      <weight>0.0625</weight>
+    </triadonaries>
+    <triadonaries load_time="at_once" path="mrztriadonaries/usa.firstname.dist.trimpb">
+      <fields>NAME1</fields>
+
+      <nations>USA</nations><nations>AUS</nations><nations>AUT</nations>
+      <nations>BEL</nations><nations>GBR</nations><nations>GBD</nations>
+      <nations>GBN</nations><nations>GBO</nations><nations>GBP</nations>
+      <nations>GBS</nations><nations>D</nations><nations>IRL</nations>
+      <nations>LIE</nations><nations>LUX</nations><nations>MCO</nations>
+      <nations>NLD</nations><nations>FRA</nations><nations>CHE</nations>
+      <nations>DNK</nations><nations>ISL</nations><nations>NOR</nations>
+      <nations>FIN</nations><nations>SWE</nations><nations>AND</nations>
+      <nations>VAT</nations><nations>GRC</nations><nations>ESP</nations>
+      <nations>ITA</nations><nations>MLT</nations><nations>PRT</nations>
+      <nations>SMR</nations>
+
+      <mrzctx_doc_subtypes>inopassport</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>mrv_a</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>mrv_b</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_1</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_2</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_3</mrzctx_doc_subtypes>
+
+      <weight>0.25</weight>
+    </triadonaries>
+    <triadonaries load_time="at_once" path="mrztriadonaries/usa.thirdname.dist.trimpb">
+      <fields>NAME2</fields>
+      <fields>NAME3</fields>
+      <fields>NAME4</fields>
+
+      <nations>USA</nations><nations>AUS</nations><nations>AUT</nations>
+      <nations>BEL</nations><nations>GBR</nations><nations>GBD</nations>
+      <nations>GBN</nations><nations>GBO</nations><nations>GBP</nations>
+      <nations>GBS</nations><nations>D</nations><nations>IRL</nations>
+      <nations>LIE</nations><nations>LUX</nations><nations>MCO</nations>
+      <nations>NLD</nations><nations>FRA</nations><nations>CHE</nations>
+      <nations>DNK</nations><nations>ISL</nations><nations>NOR</nations>
+      <nations>FIN</nations><nations>SWE</nations><nations>AND</nations>
+      <nations>VAT</nations><nations>GRC</nations><nations>ESP</nations>
+      <nations>ITA</nations><nations>MLT</nations><nations>PRT</nations>
+      <nations>SMR</nations>
+
+      <mrzctx_doc_subtypes>inopassport</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>mrv_a</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>mrv_b</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_1</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_2</mrzctx_doc_subtypes>
+      <mrzctx_doc_subtypes>td_3</mrzctx_doc_subtypes>
+
+      <weight>0.25</weight>
+    </triadonaries>
+
     <dictionaries load_time="at_once" path="dictionaries/surname.dict">
       <fields>NAME0</fields>
 

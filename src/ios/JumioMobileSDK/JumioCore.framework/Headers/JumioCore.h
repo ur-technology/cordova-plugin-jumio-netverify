@@ -41,18 +41,24 @@ FOUNDATION_EXPORT const unsigned char JumioCoreVersionString[];
 #import <JumioCore/JMRoiSettings.h>
 #import <JumioCore/JMSDKStyle.h>
 #import <JumioCore/JMSeparatorView.h>
+#import <JumioCore/JMRoiUtils.h>
 #import <JumioCore/JMString.h>
 #import <JumioCore/JMTableView.h>
 #import <JumioCore/JMThemeableButton.h>
 #import <JumioCore/JMToggleCameraButton.h>
 #import <JumioCore/JMToggleFlashButton.h>
 #import <JumioCore/NSData+Base64.h>
+#import <JumioCore/NSString+JMHashing.h>
+#import <JumioCore/NSString+JMLevenshtein.h>
+#import <JumioCore/NSString+JMUtilities.h>
+#import <JumioCore/UIDevice+JMHardware.h>
+#import <JumioCore/UIImage+JMImage.h>
+#import <JumioCore/UIImage+JMUtilities.h>
+#import <JumioCore/UIView+JMFrameManipulations.h>
+#import <JumioCore/JMUtilityMacros.h>
 #import <JumioCore/JMSDK.h>
-#import <JumioCore/JMLoadingTableViewCell.h>
+#import <JumioCore/JMStringUtilities.h>
 
-//Utilities
-#import <JumioCore/JMUtilities.h>
- 
 //State Machine Framework
 #import <JumioCore/JMBaseState.h>
 #import <JumioCore/JMState.h>

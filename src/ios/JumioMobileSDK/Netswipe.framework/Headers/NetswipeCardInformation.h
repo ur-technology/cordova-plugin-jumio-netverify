@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    NetswipeCreditCardTypeAll               = 0,        // All types except PrivateLabel and Startbucks
+    NetswipeCreditCardTypeAll               = 0,
     NetswipeCreditCardTypeVisa              = 1 << 0,
     NetswipeCreditCardTypeMasterCard        = 1 << 1,
     NetswipeCreditCardTypeAmericanExpress   = 1 << 2,
@@ -17,8 +17,7 @@ typedef enum {
     NetswipeCreditCardTypeDiscover          = 1 << 4,
     NetswipeCreditCardTypeJCB               = 1 << 5,
     NetswipeCreditCardTypeChinaUnionPay     = 1 << 6,
-    NetswipeCreditCardTypePrivateLabel      = 1 << 7,   // Does not work in combination with Starbucks
-    NetswipeCreditCardTypeStarbucks         = 1 << 8,   // Does not work in combination with PrivateLabel
+    NetswipeCreditCardTypePrivateLabel      = 1 << 7
 } NetswipeCreditCardType;
 
 typedef NSUInteger NetswipeCreditCardTypes;

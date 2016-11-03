@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetverifyViewController.h"
 
-@interface NetverifySubmissionTextView : UITextView <NetverifyAppearance>
+@interface NetverifySubmissionTextView : UITextView
 
 @property (nonatomic, strong) UIColor *textTintColor UI_APPEARANCE_SELECTOR;
+
 
 @end

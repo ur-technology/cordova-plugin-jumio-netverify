@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/Netswipe.h</key>
 		<data>
-		oUJCoFkh3yJ1KPLtXHlwO3NKYNU=
+		VzgaO3yW+qCTex11O7TOHBZ0voI=
 		</data>
 		<key>Headers/NetswipeCardInformation.h</key>
 		<data>
-		FuNceabcQnpTV0Wq5RS4fYsfHDE=
+		2xZchGfgq/vLbQM4ZfOpwywWTYM=
 		</data>
 		<key>Headers/NetswipeCustomScanOverlayViewController.h</key>
 		<data>
@@ -18,46 +18,34 @@
 		</data>
 		<key>Headers/NetswipeNavigationBarTitleImageView.h</key>
 		<data>
-		6zTdo3PPYabHKSz0gqcGI8xGCw0=
+		Tis0PIFWZnGKrIrFXiZhmampiuk=
 		</data>
-		<key>Headers/NetswipeNegativeButton.h</key>
+		<key>Headers/NetswipeSubmitButton.h</key>
 		<data>
-		HdKkOsK81BkG3EVa+Zw6AZ9zA9c=
-		</data>
-		<key>Headers/NetswipePositiveButton.h</key>
-		<data>
-		7hqA6/T3NXHBpc9WDDhKZgXNgkg=
+		EZox/jVLKQVqsqCIl+XyP0VlRNc=
 		</data>
 		<key>Headers/NetswipeViewController.h</key>
 		<data>
-		copUCWIQi97rpCFrFvnX7X8bHRo=
-		</data>
-		<key>Headers/UINavigationBar+NetswipeAppearance.h</key>
-		<data>
-		y2+b1Vfjq+7BjEf0SeAFVsnmWrA=
+		aCdiyz3nTfhVEyMfbbAQ7G+elKo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		g3LmEBjl0qiogykoRT02V8pDqH0=
+		5bZsCUBWeTBNtTJt5lAq9ehcHNs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		q1FjLLsmcUpGyCJQd/pQd08DiWA=
-		</data>
-		<key>embedded.mobileprovision</key>
-		<data>
-		LAe2XUJnRlWHcVNElmx+NknWhKU=
+		5aaOcOcPGXhEbiQwJnfIlzG49SI=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/Netswipe.h</key>
 		<data>
-		oUJCoFkh3yJ1KPLtXHlwO3NKYNU=
+		VzgaO3yW+qCTex11O7TOHBZ0voI=
 		</data>
 		<key>Headers/NetswipeCardInformation.h</key>
 		<data>
-		FuNceabcQnpTV0Wq5RS4fYsfHDE=
+		2xZchGfgq/vLbQM4ZfOpwywWTYM=
 		</data>
 		<key>Headers/NetswipeCustomScanOverlayViewController.h</key>
 		<data>
@@ -65,31 +53,19 @@
 		</data>
 		<key>Headers/NetswipeNavigationBarTitleImageView.h</key>
 		<data>
-		6zTdo3PPYabHKSz0gqcGI8xGCw0=
+		Tis0PIFWZnGKrIrFXiZhmampiuk=
 		</data>
-		<key>Headers/NetswipeNegativeButton.h</key>
+		<key>Headers/NetswipeSubmitButton.h</key>
 		<data>
-		HdKkOsK81BkG3EVa+Zw6AZ9zA9c=
-		</data>
-		<key>Headers/NetswipePositiveButton.h</key>
-		<data>
-		7hqA6/T3NXHBpc9WDDhKZgXNgkg=
+		EZox/jVLKQVqsqCIl+XyP0VlRNc=
 		</data>
 		<key>Headers/NetswipeViewController.h</key>
 		<data>
-		copUCWIQi97rpCFrFvnX7X8bHRo=
-		</data>
-		<key>Headers/UINavigationBar+NetswipeAppearance.h</key>
-		<data>
-		y2+b1Vfjq+7BjEf0SeAFVsnmWrA=
+		aCdiyz3nTfhVEyMfbbAQ7G+elKo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		q1FjLLsmcUpGyCJQd/pQd08DiWA=
-		</data>
-		<key>embedded.mobileprovision</key>
-		<data>
-		LAe2XUJnRlWHcVNElmx+NknWhKU=
+		5aaOcOcPGXhEbiQwJnfIlzG49SI=
 		</data>
 	</dict>
 	<key>rules</key>

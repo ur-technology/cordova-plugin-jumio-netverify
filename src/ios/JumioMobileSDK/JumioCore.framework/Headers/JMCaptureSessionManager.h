@@ -107,7 +107,6 @@
 - (CGSize) imageFrameSizeForCurrentConfiguration;
 
 - (UIImage*) imageFromCurrentRawBGRABuffer;
-- (UIImage*) imageFromCurrentRawBGRABufferWithoutPadding;
 - (UIImage*) imageFromCurrentCroppedRGBBuffer;
 + (UIImage*) imageFromRGBBuffer: (uint8_t*) buffer size: (CGSize) size;
 - (UIImage*) imageFromRawBGRABuffer:(uint8_t*) buffer size: (CGSize) size;

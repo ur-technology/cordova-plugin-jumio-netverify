@@ -4,41 +4,37 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/ISOCountryConverter.h</key>
-		<data>
-		cfZsc2Lj0oTtjyOOkUnJcINldeA=
-		</data>
 		<key>Headers/JMNavigationController.h</key>
 		<data>
 		lxU7XKZ7J47lmd5BIIHNXRdb49U=
 		</data>
 		<key>Headers/Netverify-Prefix.pch</key>
 		<data>
-		5tU86H+uhwkZjKCU6M+p0oeh2NQ=
+		0T8jUSy300ATzYpqL4ZuNinF9dE=
 		</data>
 		<key>Headers/Netverify.h</key>
 		<data>
-		IkWsA7kKoqdTxPK4izVQM50i1zE=
+		ellB6xOl9M7NIJ90KKp2UhzrAwM=
 		</data>
 		<key>Headers/NetverifyBackgroundImageView.h</key>
 		<data>
-		SN7GtkJQXjvOkpVKNMbI+sF/law=
+		jE/UPtQLGVHF9Scnu1ohn87Zyss=
 		</data>
 		<key>Headers/NetverifyDocumentData.h</key>
 		<data>
-		Yu0OaF4mQzwYIZiknR1Ifky8BqQ=
+		RoKixh0mbrVJ19y3WgBL8dH1qsw=
 		</data>
 		<key>Headers/NetverifyFallbackButton.h</key>
 		<data>
-		iLa72eGMWtXAOZK4Pq6jT6BJQ8Y=
+		T23TeJQGQgMg530PDZ0+hPnM2jU=
 		</data>
 		<key>Headers/NetverifyHelpButton.h</key>
 		<data>
-		qOewxLo0FfyZExd6C8eGlr5CefE=
+		eq9RqOlEDSPcfH11LD+8c5kEeFo=
 		</data>
 		<key>Headers/NetverifyInfoBarLabel.h</key>
 		<data>
-		9D6Ad/7AGWcW3WIotavFxT2OTA8=
+		zukuY4J2B/VD3lvvP7408QXZKlU=
 		</data>
 		<key>Headers/NetverifyMrzData.h</key>
 		<data>
@@ -46,86 +42,66 @@
 		</data>
 		<key>Headers/NetverifyNavigationBarTitleImageView.h</key>
 		<data>
-		+44HSUdW8A6QQLVg34Ub6D6MveE=
+		lRRUWuqrxlg9Q6+e4BaeCZ5AA2M=
 		</data>
 		<key>Headers/NetverifyNegativeButton.h</key>
 		<data>
-		6Pzm8c4kUDbGkASwADdJyRk7Byw=
+		1CQl4/6JHBG2rE7nnJsEPOkjWtQ=
 		</data>
 		<key>Headers/NetverifyPositiveButton.h</key>
 		<data>
-		h4MXdTl0e+I4NWSU6cnN9gNEYKo=
-		</data>
-		<key>Headers/NetverifyScanOverlay.h</key>
-		<data>
-		FswZQf/Nm32bF8K0NuOWRAJxkL0=
-		</data>
-		<key>Headers/NetverifySubmissionProgressBar.h</key>
-		<data>
-		Yln0L962aw72CCHFoG7oBTsYNN4=
+		sZuXI2mau7s/9+QaRaz4WvsGMIo=
 		</data>
 		<key>Headers/NetverifySubmissionTextView.h</key>
 		<data>
-		1rsR4TbzPDyHLgA8UK/omPXp2pU=
+		6piGJTw256g1izKmdoQKatsuOkg=
 		</data>
 		<key>Headers/NetverifyViewController.h</key>
 		<data>
-		ETiqvhJox+sj0WrkWJTCFKf8whs=
-		</data>
-		<key>Headers/UINavigationBar+NetverifyAppearance.h</key>
-		<data>
-		198V39MU9q3fSLYpvL6RKJdRPj8=
+		o+Qrs48joVarMsOkwazAt3hwM8U=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vqc0/hrv/ktJOs3TcgzUb5Bx2Uo=
+		cA5N592Xo1rR6SY20UO+tA/d2/M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		3DNG9/nT4G/10szXltXzdgUnhp4=
-		</data>
-		<key>embedded.mobileprovision</key>
-		<data>
-		LAe2XUJnRlWHcVNElmx+NknWhKU=
+		1p1UqgJr+zsCNZZGATBCZ3JiC7I=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/ISOCountryConverter.h</key>
-		<data>
-		cfZsc2Lj0oTtjyOOkUnJcINldeA=
-		</data>
 		<key>Headers/JMNavigationController.h</key>
 		<data>
 		lxU7XKZ7J47lmd5BIIHNXRdb49U=
 		</data>
 		<key>Headers/Netverify-Prefix.pch</key>
 		<data>
-		5tU86H+uhwkZjKCU6M+p0oeh2NQ=
+		0T8jUSy300ATzYpqL4ZuNinF9dE=
 		</data>
 		<key>Headers/Netverify.h</key>
 		<data>
-		IkWsA7kKoqdTxPK4izVQM50i1zE=
+		ellB6xOl9M7NIJ90KKp2UhzrAwM=
 		</data>
 		<key>Headers/NetverifyBackgroundImageView.h</key>
 		<data>
-		SN7GtkJQXjvOkpVKNMbI+sF/law=
+		jE/UPtQLGVHF9Scnu1ohn87Zyss=
 		</data>
 		<key>Headers/NetverifyDocumentData.h</key>
 		<data>
-		Yu0OaF4mQzwYIZiknR1Ifky8BqQ=
+		RoKixh0mbrVJ19y3WgBL8dH1qsw=
 		</data>
 		<key>Headers/NetverifyFallbackButton.h</key>
 		<data>
-		iLa72eGMWtXAOZK4Pq6jT6BJQ8Y=
+		T23TeJQGQgMg530PDZ0+hPnM2jU=
 		</data>
 		<key>Headers/NetverifyHelpButton.h</key>
 		<data>
-		qOewxLo0FfyZExd6C8eGlr5CefE=
+		eq9RqOlEDSPcfH11LD+8c5kEeFo=
 		</data>
 		<key>Headers/NetverifyInfoBarLabel.h</key>
 		<data>
-		9D6Ad/7AGWcW3WIotavFxT2OTA8=
+		zukuY4J2B/VD3lvvP7408QXZKlU=
 		</data>
 		<key>Headers/NetverifyMrzData.h</key>
 		<data>
@@ -133,43 +109,27 @@
 		</data>
 		<key>Headers/NetverifyNavigationBarTitleImageView.h</key>
 		<data>
-		+44HSUdW8A6QQLVg34Ub6D6MveE=
+		lRRUWuqrxlg9Q6+e4BaeCZ5AA2M=
 		</data>
 		<key>Headers/NetverifyNegativeButton.h</key>
 		<data>
-		6Pzm8c4kUDbGkASwADdJyRk7Byw=
+		1CQl4/6JHBG2rE7nnJsEPOkjWtQ=
 		</data>
 		<key>Headers/NetverifyPositiveButton.h</key>
 		<data>
-		h4MXdTl0e+I4NWSU6cnN9gNEYKo=
-		</data>
-		<key>Headers/NetverifyScanOverlay.h</key>
-		<data>
-		FswZQf/Nm32bF8K0NuOWRAJxkL0=
-		</data>
-		<key>Headers/NetverifySubmissionProgressBar.h</key>
-		<data>
-		Yln0L962aw72CCHFoG7oBTsYNN4=
+		sZuXI2mau7s/9+QaRaz4WvsGMIo=
 		</data>
 		<key>Headers/NetverifySubmissionTextView.h</key>
 		<data>
-		1rsR4TbzPDyHLgA8UK/omPXp2pU=
+		6piGJTw256g1izKmdoQKatsuOkg=
 		</data>
 		<key>Headers/NetverifyViewController.h</key>
 		<data>
-		ETiqvhJox+sj0WrkWJTCFKf8whs=
-		</data>
-		<key>Headers/UINavigationBar+NetverifyAppearance.h</key>
-		<data>
-		198V39MU9q3fSLYpvL6RKJdRPj8=
+		o+Qrs48joVarMsOkwazAt3hwM8U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		3DNG9/nT4G/10szXltXzdgUnhp4=
-		</data>
-		<key>embedded.mobileprovision</key>
-		<data>
-		LAe2XUJnRlWHcVNElmx+NknWhKU=
+		1p1UqgJr+zsCNZZGATBCZ3JiC7I=
 		</data>
 	</dict>
 	<key>rules</key>

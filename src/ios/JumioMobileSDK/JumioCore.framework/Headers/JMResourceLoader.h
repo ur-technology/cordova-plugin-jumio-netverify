@@ -29,6 +29,4 @@ extern NSString * const kNetverifySDKResources;
 
 + (NSString*) suffixForImagesDependingOnDeviceScreenScale;
 
-+ (UIImage*) imageResourceWithName: (NSString*) imageName;
-
 @end

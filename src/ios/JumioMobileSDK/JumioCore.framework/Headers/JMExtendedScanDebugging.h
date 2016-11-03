@@ -7,14 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-extern NSString * const kExtScanDebuggingRequestTimingTask;
-extern NSString * const kExtScanDebuggingRequestTimingResponseData;
-extern NSString * const kExtScanDebuggingRequestTimingHTTPStatusCode;
-extern NSString * const kExtScanDebuggingRequestTimingTimeRequired;
-extern NSString * const kExtScanDebuggingRequestTimingError;
-extern const NSUInteger kExtScanDebuggingMaxServerTaskDataLengthAllowed;
+//#import "NVScanViewController.h"
 
 @interface JMExtendedScanDebugging : NSObject
 {
@@ -42,7 +35,5 @@ extern const NSUInteger kExtScanDebuggingMaxServerTaskDataLengthAllowed;
 
 
 + (JMExtendedScanDebugging*) sharedInstance;
-
-- (void)writeString:(NSString*)string toFileAtPath:(NSString*)filePath;
 
 @end
