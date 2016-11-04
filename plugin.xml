@@ -2,9 +2,9 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-plugin-jumio-netverify"
         version="0.1.0">
-    <name>JumioMobile</name>
+    <name>cordova-plugin-jumio-netverifye</name>
     <description>JumioSDK wrapper</description>
-    <author>Payfriendz Ltd</author>
+    <author>DPX</author>
     <license>Apache 2.0</license>
 
     <keywords>cordova,phonegap,jumio</keywords>

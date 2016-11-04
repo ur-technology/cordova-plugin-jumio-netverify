@@ -1,5 +1,5 @@
 {
-  "name": "cordova-plugin-android-fingerprint-auth",
+  "name": "cordova-plugin-jumio-netverify",
   "version": "1.0.0",
   "description": "Cordova plugin to use Jumio Sdk",
   "cordova": {
