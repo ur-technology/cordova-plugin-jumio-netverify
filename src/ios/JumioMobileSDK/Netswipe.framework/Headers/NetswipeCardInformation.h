@@ -17,7 +17,7 @@ typedef enum {
     NetswipeCreditCardTypeDiscover          = 1 << 4,
     NetswipeCreditCardTypeJCB               = 1 << 5,
     NetswipeCreditCardTypeChinaUnionPay     = 1 << 6,
-    NetswipeCreditCardTypePrivateLabel      = 1 << 7
+    NetswipeCreditCardTypeStarbucks         = 1 << 7
 } NetswipeCreditCardType;
 
 typedef NSUInteger NetswipeCreditCardTypes;
@@ -29,7 +29,7 @@ typedef NSUInteger NetswipeUserInterfaceOrientations;
  */
 @interface NetswipeCardInformation : NSObject {}
 
-@property (nonatomic, readonly) NetswipeCreditCardType cardType;      // The card type
+@property (nonatomic, assign) NetswipeCreditCardType cardType;      // The card type
 
 @property (nonatomic, strong) NSMutableString *cardNumber;                 // The card number in the format 1234567812345678
 @property (nonatomic, strong) NSMutableString *cardNumberGrouped;          // The card number in grouped style (e.g. 1234 5678 1234 5678)
@@ -45,7 +45,6 @@ typedef NSUInteger NetswipeUserInterfaceOrientations;
 @property (nonatomic, strong) NSMutableString *cardAccountNumber;          // The UK account number
 @property (nonatomic, strong) NSMutableString *cardSortCode;               // The UK sort code
 
-@property (nonatomic, assign) BOOL cardNumberManuallyEntered;
 @property (nonatomic, assign) BOOL cardSortCodeValid;                      // The card sort code is valid
 @property (nonatomic, assign) BOOL cardAccountNumberValid;                 // The card account number is valid
 

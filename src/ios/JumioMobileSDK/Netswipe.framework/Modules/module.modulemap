@@ -38,12 +38,32 @@ module Netswipe.NetswipeCustomScanOverlayViewController {
     export *
 }
 
-module Netswipe.NetswipeSubmitButton {
-    header "NetswipeSubmitButton.h"
+module Netswipe.NetswipePositiveButton {
+    header "NetswipePositiveButton.h"
+    export *
+}
+
+module Netswipe.NetswipeNegativeButton {
+    header "NetswipeNegativeButton.h"
+    export *
+}
+
+module Netswipe.NetswipeBaseView {
+    header "NetswipeBaseView.h"
+    export *
+}
+
+module Netswipe.NetswipeScanOverlay{
+    header "NetswipeScanOverlay.h"
     export *
 }
 
 module Netswipe.NetswipeNavigationBarTitleImageView {
     header "NetswipeNavigationBarTitleImageView.h"
+    export *
+}
+
+module Netswipe.UINavigationBarNetswipeAppearance {
+    header "UINavigationBar+NetswipeAppearance.h"
     export *
 }

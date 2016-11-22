@@ -31,12 +31,14 @@
     NSLayoutConstraint * _contentInsetRightLayoutConstraint;
     NSLayoutConstraint * _contentInsetBottomLayoutConstraint;
     NSLayoutConstraint * _contentInsetTopLayoutConstraint;
+    
+    NSLayoutConstraint * _portraitRoiOffset;
 }
 
 @property (nonatomic, strong) JMRoi * roi;
 @property (nonatomic, strong) JMRoiSettings * roiSettings;
 @property (nonatomic, assign, readonly) UIEdgeInsets contentInset;
-
+@property (nonatomic, strong, readonly) UIImageView* brandingLogoImageView;
 
 - (instancetype)initWithRoiAspectRatio:(CGFloat)aspectRatio;
 - (void)setRoiAspectRatio:(CGFloat)aspectRatio;
@@ -50,5 +52,9 @@
 
 - (NSArray*)landscapeLayoutConstraints;
 - (void)updateConstraintsFromLandscapeConstraints:(NSArray *)constraints;
+
+- (NSArray*)brandingLogoPositionConstraints;
+- (void)setBrandingLogoHidden:(BOOL)hidden;
+- (void)setRoiOffset:(CGPoint)offset;
 
 @end

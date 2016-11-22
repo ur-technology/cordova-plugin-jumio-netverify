@@ -11,9 +11,12 @@
 @interface JMServerTaskLogInfo : NSObject
 
 @property (nonatomic, strong) Class     taskClass;
+@property (nonatomic,   copy) NSString* httpBody;
 @property (nonatomic, strong) NSData*   data;
 @property (nonatomic, assign) long      executionTime;
 @property (nonatomic, assign) NSInteger statusCode;
 @property (nonatomic, strong) NSError*  error;
+
+- (void)reset;
 
 @end

@@ -29,6 +29,14 @@ typedef enum {
     NVDocumentVariantPlastic
 } NVDocumentVariant;
 
+typedef enum {
+    NVExtractionMethodMRZ,
+    NVExtractionMethodOCR,
+    NVExtractionMethodBarcode,
+    NVExtractionMethodBarcodeOCR,
+    NVExtractionMethodNone,
+}NVExtractionMethod;
+
 @interface NetverifyDocumentData : NSObject {
     
 }
@@ -54,17 +62,17 @@ typedef enum {
 @property (nonatomic, strong) NSString *originatingCountry;
 
 //Address
-@property (nonatomic, strong) NSString *street;
+@property (nonatomic, strong) NSString *addressLine;
 @property (nonatomic, strong) NSString *city;
-@property (nonatomic, strong) NSString *state;
-@property (nonatomic, strong) NSString *postalCode;
+@property (nonatomic, strong) NSString *subdivision;
+@property (nonatomic, strong) NSString *postCode;
+
+@property (nonatomic, assign) NVExtractionMethod extractionMethod;
 
 // Raw MRZ data
 @property (nonatomic, strong) NetverifyMrzData *mrzData;
 
 @property (nonatomic, assign) BOOL nameMatch;                             // Result of name comparison based on the Levenshtein distance algorithm if property name was set (default: NO)
 @property (nonatomic, assign) NSInteger nameDistance;                     // The Levenshtein distance of the extracted name and the property name (default: -1).
-
-@property (nonatomic, assign) BOOL livenessDetected;                     // returns YES when NVFaceScanViewController detected live person.
 
 @end

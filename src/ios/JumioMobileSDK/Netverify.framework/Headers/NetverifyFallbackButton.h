@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetverifyViewController.h"
 
-@interface NetverifyFallbackButton : UIButton
+@interface NetverifyFallbackButton : UIButton <NetverifyAppearance>
+
+@property (nonatomic,strong) UIColor *borderColor UI_APPEARANCE_SELECTOR;
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
 - (UIColor *)backgroundColorForState:(UIControlState)state UI_APPEARANCE_SELECTOR;

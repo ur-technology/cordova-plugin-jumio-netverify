@@ -2,7 +2,7 @@
 <resources>
     <style name="CustomTheme.Netverify" parent="@style/Theme.Netverify">
         <item name="android:actionBarStyle">@style/CustomTheme_CustomActionBar</item>
-        <item name="netverify_infoBarTextColor">#00ff00</item>
+        <!--<item name="netverify_infoBarTextColor">#00ff00</item>-->
     </style>
 
     <!-- ActionBar styles -->

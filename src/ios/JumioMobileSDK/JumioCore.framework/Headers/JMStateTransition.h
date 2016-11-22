@@ -18,5 +18,8 @@
 @property (nonatomic, strong, readonly) JMStateTransitionEvent* event;
 
 + (instancetype)transitionWithName:(NSString*)name sourceState:(JMBaseState*)sourceState targetState:(JMBaseState*)targetState event:(JMStateTransitionEvent*)event;
++ (instancetype)resetTransitionFromSourceState:(JMBaseState*)sourceState targetState:(JMBaseState*)targetState;
+
+- (BOOL)isResetTransition;
 
 @end

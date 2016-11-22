@@ -8,28 +8,16 @@
 
 #import "JMBaseServerTask.h"
 
-// Configurations
-extern NSInteger kMaximumRenewAttempts;
-
-// Header Keys
-extern NSString *const kConfigurationKeyAuthorization;
-extern NSString *const kConfigurationKeyAccept;
-extern NSString *const kConfigurationKeyContentType;
-
-extern NSString *const kConfigurationValueJSON;
-extern NSString *const kConfigurationValueMultipartForm;
-
-extern NSString *const kConfigurationValueBoundary;
-extern NSString *const kConfigurationValueImageJPEG;
-extern NSString *const kConfigurationValueImage;
-
-extern NSString *const kConfigurationValueBearer;
-
 @interface JMBaseServerTask (Utilities)
 
 - (NSString *)stringFromHTTPMethod:(HTTPMethod)method;
 - (NSString *)contentTypeString:(ContentType)contentType;
 - (NSString *)stringFromContentType:(ContentType)accept;
 
-- (NSString *)boundary;
+- (void)addObject:(id)aObject forKey:(id<NSCopying>)aKey toDictionary:(NSMutableDictionary*)aDictionary;
+- (NSArray*)createURLQueryFromParameters:(NSDictionary*)parameters;
+- (NSURL *)createURLwithBaseURL:(NSString*)baseURL URLPath:(NSString*)urlPath parameters:(NSDictionary*)parameters;
+- (NSString *) formatString: (NSString *) string forMaximumLength: (NSUInteger) maxLength;
+
+
 @end

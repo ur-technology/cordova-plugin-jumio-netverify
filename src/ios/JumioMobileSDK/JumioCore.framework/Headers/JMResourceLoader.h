@@ -12,21 +12,17 @@
 
 #define SharedResourceLoader [JMResourceLoader sharedInstance]
 
-extern NSString * const kNetswipeSDKResources;
-extern NSString * const kNetverifySDKResources;
-
 @interface JMResourceLoader : NSObject
-
-@property (nonatomic, weak) NSBundle *netswipeBundle;
-@property (nonatomic, weak) NSBundle *netverifyBundle;
 
 + (JMResourceLoader *)sharedInstance;
 
-- (UIImage*)getImageWithName:(NSString*)imageName bundleName:(NSString*)bundleName;
-- (NSData*)getCertificateForDataCenter: (JumioDataCenter) dataCenter fromResourceBundle: (NSString*)bundleName;
-- (NSData*)getFontWithName:(NSString*)name bundleName:(NSString*)bundleName;
-- (NSString*)getOCRRootPathForBundle:(NSString*)bundleName;
+- (UIImage*)getImageWithName:(NSString*)imageName bundle:(NSBundle*)bundleName;
+- (NSData *)getFontWithName:(NSString *)name bundle:(NSBundle*)bundle;
+- (NSString *)getOCRRootPathForBundle:(NSBundle*)bundle;
+- (NSDictionary *) getPlistFromBundle:(NSBundle*)bundle;
 
 + (NSString*) suffixForImagesDependingOnDeviceScreenScale;
+
++ (UIImage*) imageResourceWithName: (NSString*) imageName;
 
 @end

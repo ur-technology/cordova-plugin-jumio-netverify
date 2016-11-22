@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-jumio-netverify"
-        version="0.1.0">
+    id="cordova-plugin-jumio-netverify"
+    version="0.1.0">
     <name>cordova-plugin-jumio-netverifye</name>
     <description>JumioSDK wrapper</description>
     <author>DPX</author>
     <license>Apache 2.0</license>
-
+    
     <keywords>cordova,phonegap,jumio</keywords>
-
+    
+    <engines>
+        <engine name="cordova-android" version=">=4.0.0" />
+        <engine name="cordova-ios" version=">=3.8.0" />
+    </engines>
+    
+    <!--<hook type="after_build" src="../../hooks/after_build/addEmbedded.js" />-->
+    
     <js-module src="www/cdv-plugin-jumio-sdk.js" name="JumioMobile">
         <clobbers target="JumioMobile" />
     </js-module>
-
+    
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
@@ -20,18 +27,18 @@
                 <param name="ios-package" value="JumioMobileCordovaPlugin" onload="true" />
             </feature>
         </config-file>
-
-        <header-file src="src/ios/JumioMobileCordovaPlugin.h" />
-        <source-file src="src/ios/JumioMobileCordovaPlugin.m" />
-
-        <resource-file src="src/ios/JumioMobileSDK/Netswipe/NetswipeResources.bundle" />
-        <resource-file src="src/ios/JumioMobileSDK/Netswipe/Localizable-Netswipe.strings" />
-        <resource-file src="src/ios/JumioMobileSDK/Netswipe/Netswipe.xcassets" />
+        
+        <header-file src="src/ios/JumioMobileCordovaPlugin.h"/>
+        <source-file src="src/ios/JumioMobileCordovaPlugin.m"/>
+        
         <resource-file src="src/ios/JumioMobileSDK/Netverify/NetverifyResources.bundle" />
-        <resource-file src="src/ios/JumioMobileSDK/Netverify/Localizable-Netverify.strings" />
         <resource-file src="src/ios/JumioMobileSDK/Netverify/Netverify.xcassets" />
-
+        
+        <resource-file src="src/ios/JumioMobileSDK/Localizable-Netswipe.strings" />
+        <source-file src="src/ios/JumioMobileSDK/Localizable-Netverify.strings" />
+        
         <framework src="Accelerate.framework" />
+        <framework src="OpenGLES.framework" />
         <framework src="AudioToolbox.framework" />
         <framework src="AVFoundation.framework" />
         <framework src="CFNetwork.framework" />
@@ -46,45 +53,48 @@
         <framework src="SystemConfiguration.framework" />
         <framework src="QuartzCore.framework"/>
         <framework src="UIKit.framework"/>
-
-        <framework src="src/ios/JumioMobileSDK/JumioCore.framework" custom="true"/>
-        <framework src="src/ios/JumioMobileSDK/Netswipe.framework" custom="true"/>
-        <framework src="src/ios/JumioMobileSDK/Netverify.framework" custom="true"/>
-
+        
         <framework src="libc++.dylib" />
         <framework src="libz.dylib" />
         <framework src="libiconv.dylib" />
+        
+        <framework src="src/ios/JumioMobileSDK/JumioCore.framework" custom="true" embed="true" />
+        <framework src="src/ios/JumioMobileSDK/Netswipe.framework" custom="true" embed="true" />
+        <framework src="src/ios/JumioMobileSDK/Netverify.framework" custom="true" embed="true" />
+        <!--<framework src="src/ios/JumioMobileSDK/MicroBlink.framework" custom="true" embed="true"/>-->
     </platform>
 
-    <!-- android 
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="JumioMobile">
-                <param name="android-package" value="com.payfriendz.cordova.jumio.JumioMobileCordovaPlugin" />
-            </feature>
-        </config-file>
-
-        <source-file src="src/android/JumioMobileCordovaPlugin.java" target-dir="src/android/JumioMobileCordovaPlugin.java" />>
-        <source-file src="src/android/res/CustomTheme.xml" target-dir="res/values"/>
-
-        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
-
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-            <uses-permission android:name="android.permission.INTERNET"/>
-            <uses-permission android:name="android.permission.CAMERA"/>
-            <uses-permission android:name="android.permission.VIBRATE"/>
-            <uses-feature android:name="android.hardware.camera" android:required="true"/>
-            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+<!-- android    -->
+<platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="JumioMobile">
+            <param name="android-package" value="com.cordova.plugin.android.jumiomobilecordovaPlugin.JumioMobileCordovaPlugin"/>
+            
+            <!--                <param name="android-package" value="android.JumioMobileCordovaPlugin.java" />-->
+        </feature>
+    </config-file>
+    
+    <source-file src="src/android/JumioMobileCordovaPlugin.java" target-dir="src/com/cordova/plugin/android/jumiomobilecordovaPlugin" />
+    
+    <!--        <source-file src="src/android/JumioMobileCordovaPlugin.java" target-dir="src/android/JumioMobileCordovaPlugin.java" />>-->
+    <source-file src="src/android/res/CustomTheme.xml" target-dir="res/values"/>
+    
+    <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+    
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.CAMERA"/>
+        <uses-permission android:name="android.permission.VIBRATE"/>
+        <uses-feature android:name="android.hardware.camera" android:required="true"/>
+        <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
         
-            <activity android:theme="@style/CustomTheme.Netverify" android:name="com.jumio.netverify.sdk.activity.NetverifyActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
-            <activity android:theme="@style/Theme.Netswipe" android:hardwareAccelerated="true" android:name="com.jumio.netswipe.sdk.activity.ScanCardActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
-        </config-file>
-
-        <proguard-config>
-            -keep class com.jumio.** { *; }
-            -keep class netswipe.** { *; }
-        </proguard-config>
-
-    </platform> -->
-</plugin>
+        <activity android:theme="@style/CustomTheme.Netverify" android:name="com.jumio.nv.NetverifyActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+    </config-file>
+    
+    <proguard-config>
+        -keep class com.jumio.** { *; }
+        -keep class netswipe.** { *; }
+    </proguard-config>
+    
+</platform></plugin>

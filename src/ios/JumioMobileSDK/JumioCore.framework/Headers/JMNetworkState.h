@@ -25,11 +25,10 @@
 
 - (void)executeTask;
 
-- (void)didFinishTaskSuccessfully;
-
 - (void)didFailTask;
 
 - (void)cancel;
+- (void)reset;
 
 - (void) initStateMachine;
 
@@ -39,5 +38,6 @@
 
 - (BOOL) isCurrentStatusSuccess;
 - (BOOL) isCurrentStatusError;
+- (BOOL) isExecutable;
 
 @end

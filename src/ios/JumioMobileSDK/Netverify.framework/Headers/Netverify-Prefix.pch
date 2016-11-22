@@ -12,18 +12,9 @@
 #import <UIKit/UIKit.h>
 #import <JumioCore/JMResourceLoader.h>
 #import <JumioCore/JMLogging.h>
-#import <JumioCore/NSString+JMUtilities.h>
-#import <JumioCore/UIView+JMFrameManipulations.h>
-#import <JumioCore/UIImage+JMUtilities.h>
 #import <JumioCore/NSData+Base64.h>
 #import <JumioCore/JMSDKStyle.h>
-#import "NVDefaultLocalizableStrings.h"
-#import <JumioCore/UIImage+JMImage.h>
-#import <JumioCore/NSString+JMLevenshtein.h>
-#import <JumioCore/UIDevice+JMHardware.h>
-#import <JumioCore/NSString+JMHashing.h>
-#import <JumioCore/JMUtilityMacros.h>
-#import "NVSDK.h"
+#import <JumioCore/JMUtilities.h>
 
 #endif //__OBJC__
 

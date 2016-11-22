@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-		<item name="bam_scanOverlay">@color/jumio_white_alpha72</item>
-		<item name="bam_scanBackground">@color/jumio_black_alpha50</item>
-	</style>
-</resources>
