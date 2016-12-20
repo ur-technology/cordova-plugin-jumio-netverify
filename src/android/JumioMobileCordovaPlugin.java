@@ -109,7 +109,6 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
                     documentDataResult.put("optionalData2", documentData.getOptionalData2());
                     documentDataResult.put("nameMatch", documentData.isNameMatch());
                     documentDataResult.put("nameDistance", documentData.getNameDistance());
-                    documentDataResult.put("livenessDetected", documentData.getLivenessDetected());
                     
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
                     documentDataResult.put("issuingDate", sdf.format(documentData.getIssuingDate()));
@@ -143,7 +142,7 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
     
     private void presentNetverifyController(JSONObject crendentials, JSONObject configuration, CallbackContext callbackContext){
         try{
-            this.netverifySDK = NetverifySDK.create(cordova.getActivity(), crendentials.getString("apiToken"), crendentials.getString("apiSecret"), JumioDataCenter.US);
+            this.netverifySDK = NetverifySDK.create(cordova.getActivity(), crendentials.getString("apiToken"), crendentials.getString("apiSecret"), JumioDataCenter.EU);
         }catch(org.json.JSONException exception){
             callbackContext.error("Invalid credentials");
         }catch(com.jumio.core.exceptions.PlatformNotSupportedException exception){
