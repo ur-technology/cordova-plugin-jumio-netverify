@@ -173,10 +173,10 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
 
             String firstName = configuration.getString("firstName");
             String lastName = configuration.getString("lastName");
-            if( firstName != null && lastName != null){
-                this.netverifySDK.setFirstAndLastName(firstName, lastName);
-                // this.netverifySDK.setName(firstName + " " + lastName);
-            }
+            // if( firstName != null && lastName != null){
+            //     // this.netverifySDK.setFirstAndLastName(firstName, lastName);
+            //     this.netverifySDK.setName(firstName + " " + lastName);
+            // }
         }catch(org.json.JSONException exception){
             callbackContext.error("Invalid configuration");
         }
