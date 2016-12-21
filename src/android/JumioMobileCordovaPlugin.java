@@ -28,15 +28,15 @@ import org.json.JSONException;
 import java.text.SimpleDateFormat;
 
 public class JumioMobileCordovaPlugin extends CordovaPlugin {
-    
+
     private static final int PERMISSION_REQUEST_CODE_NETVERIFY = 301;
     private CallbackContext callbackContext;
     private NetverifySDK netverifySDK;
     private JSONArray arg;
-    
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        
+
         //NETVERIFY
         if("isSupportedPlatformForNetverify".equals(action)) {
             if (NetverifySDK.isSupportedPlatform()){
@@ -62,26 +62,26 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             //THIS IS A NO-OP ON ANDROID, APPEARENCE IS NOT CONFIGURED THROUGH CODE
             return true;
         }
-        
+
         //NETSWIPE
         if("netswipeSdkVersion".equals(action)) {
             String sdkVersion = netverifySDK.getSDKVersion();
             callbackContext.success(sdkVersion);
             return true;
         }
-        
+
         if("configureNetswipeControllerAppearence".equals(action)){
             //THIS IS A NO-OP ON ANDROID, APPEARENCE IS NOT CONFIGURED THROUGH CODE
             return true;
         }
-        
+
         return false;
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         JSONObject result = new JSONObject();
-        
+
         if (requestCode == NetverifySDK.REQUEST_CODE) {
             if (data == null)
                 return;
@@ -89,10 +89,10 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
                 //if (resultCode == NetverifySDK.RESULT_CODE_SUCCESS || resultCode == NetverifySDK.RESULT_CODE_BACK_WITH_SUCCESS) {
                 try{
                     result.put("scanReference", data.getStringExtra(NetverifySDK.EXTRA_SCAN_REFERENCE));
-                    
+
                     NetverifyDocumentData documentData = (NetverifyDocumentData) data.getParcelableExtra(NetverifySDK.EXTRA_SCAN_DATA);
                     JSONObject documentDataResult = new JSONObject();
-                    
+
                     documentDataResult.put("selectedCountry", documentData.getSelectedCountry());
                     documentDataResult.put("idNumber", documentData.getIdNumber());
                     documentDataResult.put("personalNumber", documentData.getPersonalNumber());
@@ -107,39 +107,40 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
                     documentDataResult.put("postalCode", documentData.getPostCode());
                     documentDataResult.put("optionalData1", documentData.getOptionalData1());
                     documentDataResult.put("optionalData2", documentData.getOptionalData2());
-                    documentDataResult.put("nameMatch", documentData.isNameMatch());
-                    documentDataResult.put("nameDistance", documentData.getNameDistance());
-                    
+                    // documentDataResult.put("nameMatch", documentData.isNameMatch());
+                    // documentDataResult.put("nameDistance", documentData.getNameDistance());
+                    // documentDataResult.put("livenessDetected", documentData.getLivenessDetected());
+
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
                     documentDataResult.put("issuingDate", sdf.format(documentData.getIssuingDate()));
                     documentDataResult.put("expiryDate", sdf.format(documentData.getExpiryDate()));
                     documentDataResult.put("dob", sdf.format(documentData.getDob()));
-                    
+
                     documentDataResult.put("selectedDocumentType", documentData.getSelectedDocumentType() == null ? "UNKNOWN" : documentData.getSelectedDocumentType().name());
                     documentDataResult.put("gender", documentData.getGender() == null ? "UNKNOWN" : documentData.getGender().toString());
-                    
+
                     result.put("documentData", documentDataResult);
                 }catch(JSONException ex){
                     this.callbackContext.error("Error reading scan results");
                 }
-                
+
                 this.callbackContext.success(result);
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 try{
                     result.put("scanReference", data.getStringExtra(NetverifySDK.EXTRA_SCAN_REFERENCE));
                     result.put("errorCode", data.getIntExtra(NetverifySDK.EXTRA_ERROR_CODE, 0));
                     result.put("errorMessage", data.getStringExtra(NetverifySDK.EXTRA_ERROR_MESSAGE));
-                    
+
                     this.callbackContext.error(result);
                 }catch(JSONException ex){
                     this.callbackContext.error("Scan failed, but so did the error reading");
                 }
-                
+
             }
             this.netverifySDK.destroy();
         }
     }
-    
+
     private void presentNetverifyController(JSONObject crendentials, JSONObject configuration, CallbackContext callbackContext){
         try{
             this.netverifySDK = NetverifySDK.create(cordova.getActivity(), crendentials.getString("apiToken"), crendentials.getString("apiSecret"), JumioDataCenter.EU);
@@ -148,9 +149,9 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
         }catch(com.jumio.core.exceptions.PlatformNotSupportedException exception){
             callbackContext.error("Device not supported");
         }
-        
+
         if(this.netverifySDK == null) return;
-        
+
         try{
             if(configuration.has("preselectedCountry")) this.netverifySDK.setPreselectedCountry(configuration.getString("preselectedCountry"));
             if(configuration.has("merchantScanReference")){ this.netverifySDK.setMerchantScanReference(configuration.getString("merchantScanReference")); }
@@ -161,7 +162,7 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             if(configuration.has("requireFaceMatch")){ this.netverifySDK.setRequireFaceMatch(configuration.getBoolean("requireFaceMatch")); }
             //if(configuration.has("enableVisa")){ this.netverifySDK.setEnableVisa(configuration.getBoolean("enableVisa")); }
             //if(configuration.has("showFlagOnInfoBar")){ this.netverifySDK.setShowFlagOnInfoBar(configuration.getBoolean("showFlagOnInfoBar")); }
-            
+
             ArrayList<NVDocumentType> documentTypes = new ArrayList<NVDocumentType>();
             documentTypes.add(NVDocumentType.PASSPORT);
             documentTypes.add(NVDocumentType.DRIVER_LICENSE);
@@ -169,17 +170,17 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             if(configuration.has("preselectedDocumentType")){ this.netverifySDK.setPreselectedDocumentTypes(documentTypes); }
             if(configuration.has("preselectedDocumentVariant")){ setUpDocumentVariantFromStringCode(configuration.getString("preselectedDocumentVariant")); }
             if(configuration.has("cameraPosition")){ this.netverifySDK.setCameraPosition(getCameraPositionFromStr(configuration.getString("cameraPosition"))); }
-            
+
             String firstName = configuration.getString("firstName");
             String lastName = configuration.getString("lastName");
             if( firstName != null && lastName != null){
-                //this.netverifySDK.setFirstAndLastName(firstName, lastName);
-                this.netverifySDK.setName(firstName + " " + lastName);
+                this.netverifySDK.setFirstAndLastName(firstName, lastName);
+                // this.netverifySDK.setName(firstName + " " + lastName);
             }
         }catch(org.json.JSONException exception){
             callbackContext.error("Invalid configuration");
         }
-        
+
         Runnable runnable = new Runnable() {
             public void run() {
                 try {
@@ -187,14 +188,14 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
                 } catch (MissingPermissionException e){
                     Toast.makeText(cordova.getActivity(),e.getMessage(),Toast.LENGTH_LONG).show();
                 }
-                
+
             }
         };
-        
+
         this.cordova.setActivityResultCallback(this);
         this.cordova.getActivity().runOnUiThread(runnable);
     }
-    
+
     private void checkPermissionsAndStart() throws  JSONException
     {
         // MobileSDK.hasPermissionsFor(cordova.getActivity(),)
@@ -208,14 +209,14 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             startSDK();
         }
     }
-    
+
     public void startSDK()throws JSONException
     {
         this.presentNetverifyController(this.arg.getJSONObject(0), this.arg.getJSONObject(1), callbackContext);
     }
-    
-    
-    
+
+
+
     @Override
     public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException{
         boolean allGranted = true;
@@ -225,7 +226,7 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
                 break;
             }
         }
-        
+
         if (allGranted) {
             if (requestCode == PERMISSION_REQUEST_CODE_NETVERIFY) {
                 // startSdk(netverifySDK);
@@ -236,8 +237,8 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             super.onRequestPermissionResult(requestCode, permissions, grantResults);
         }
     }
-    
-    
+
+
     private void setUpDocumentVariantFromStringCode(String documentVariantStr){
         if(documentVariantStr == "PAPER"){
             this.netverifySDK.setPreselectedDocumentVariant(NVDocumentVariant.PAPER);
@@ -246,7 +247,7 @@ public class JumioMobileCordovaPlugin extends CordovaPlugin {
             this.netverifySDK.setPreselectedDocumentVariant(NVDocumentVariant.PLASTIC);
         }
     }
-    
+
     private JumioCameraPosition getCameraPositionFromStr(String cameraPositionStr){
         if(cameraPositionStr == "FRONT"){
             return JumioCameraPosition.FRONT;
